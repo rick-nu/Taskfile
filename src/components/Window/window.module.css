@@ -30,7 +30,7 @@
 .content {
 	padding: 0.8rem;
 	overflow: scroll;
-	max-height: calc(100dvh - 8rem);
+	max-height: calc(100dvh - 11.2rem);
 }
 
 .dark {
