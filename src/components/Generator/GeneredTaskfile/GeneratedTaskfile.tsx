@@ -1,15 +1,10 @@
 'use client';
 
 import { ReactElement } from 'react';
-
-import styles from './generated-taskfile.module.css';
+import { taskfile } from '@/components/Generator/GeneredTaskfile/taskfile';
 
 const GeneratedTaskfile = (): ReactElement => {
-	return (
-		<div className={styles.container}>
-			generated taskfile here
-		</div>
-	)
+	return <pre>{taskfile()}</pre>
 }
 
 export default GeneratedTaskfile;
