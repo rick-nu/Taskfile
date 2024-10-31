@@ -1,7 +1,7 @@
-import Generator from '@/components/Generator';
+import Settings from '@/components/Generator';
 
 export default function Home() {
 	return (
-		<Generator />
+		<Settings />
 	);
 }
