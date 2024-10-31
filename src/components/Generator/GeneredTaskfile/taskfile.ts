@@ -50,4 +50,5 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 
 # Execute tasks
 banner
-if [[ "$(declare -fF task:\${@ - help})" ]]; then "task:\${@ - help}"; else "task:help"; exit 1; fi`;
+if [[ "$(declare -fF task:\${@-help})" ]]; then task:\${@-help}; else task:help; exit 1; fi
+`;
