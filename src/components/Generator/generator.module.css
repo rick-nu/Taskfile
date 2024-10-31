@@ -1,0 +1,16 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	max-width: 88rem;
+	gap: 4rem;
+	padding: 4rem;
+}
+
+.settingsWindow {
+	width: 25rem;
+}
+
+.outputWindow {
+	flex-grow: 1;
+}
