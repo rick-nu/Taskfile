@@ -1,7 +1,8 @@
 {
 	"name": "@enrise/taskfile",
-	"version": "0.1.0",
-	"private": true,
+	"version": "2.0.0",
+	"description": "A ./Taskfile is a task runner in plain and easy Bash. It adds a list of available tasks to your project.",
+	"license": "MIT",
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build",
@@ -21,5 +22,31 @@
 		"@types/react-dom": "^18",
 		"eslint": "^8",
 		"eslint-config-next": "^15"
-	}
+	},
+	"keywords": [
+		"bash",
+		"cli",
+		"automation",
+		"makefile",
+		"task-runner",
+		"taskfile"
+	],
+	"authors": [
+		{
+			"name": "Rick van der Staaij",
+			"url": "https://rick.nu"
+		},
+		{
+			"name": "Enrise | Impact driven development",
+			"url": "https://enrise.com"
+		},
+		{
+			"name": "Contributors",
+			"url": "https://github.com/Enrise/Taskfile/graphs/contributors"
+		}
+	],
+	"bugs": {
+		"url": "https://github.com/Enrise/Taskfile/issues"
+	},
+	"homepage": "https://github.com/Enrise/Taskfile#readme"
 }

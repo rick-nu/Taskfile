@@ -7,7 +7,7 @@ import styles from './settings.module.css';
 const Settings = (): ReactElement => {
 	return (
 		<div className={styles.container}>
-			settings
+			tweak settings here
 		</div>
 	)
 }
