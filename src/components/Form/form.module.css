@@ -1,0 +1,18 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.label {
+	display: block;
+}
+
+.input {
+	display: block;
+}
+
+.error {
+	display: block;
+	color: #d00000;
+}

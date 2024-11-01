@@ -1,0 +1,39 @@
+.window {
+	background: #fff;
+	border-radius: 0.2rem;
+	box-shadow: 0 0 3rem #0005;
+	overflow: hidden;
+}
+
+.topBar {
+	display: flex;
+	flex-direction: row;
+	gap: 0.8rem;
+	padding: 0.8rem;
+}
+
+.topBar > div {
+	width: 1.6rem;
+	height: 1.6rem;
+	background-color: #fbbf2b;
+	border-radius: 50%;
+
+	&:first-child {
+		background-color: #ff5e56;
+	}
+
+	&:last-child {
+		background-color: #2ac93f;
+	}
+}
+
+.content {
+	padding: 0.8rem;
+	overflow: scroll;
+	max-height: calc(100dvh - 11.2rem);
+}
+
+.dark {
+	background-color: #202020;
+	color: #fff;
+}

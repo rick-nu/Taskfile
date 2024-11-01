@@ -1,0 +1,46 @@
+import React, { ReactElement } from 'react';
+
+import { RegisterOptions, useFormContext } from 'react-hook-form';
+
+import styles from './radio.module.css';
+import FormError from "@/components/Form/Error";
+
+export type RadioOption = {
+	label: string;
+	value: string | undefined | number;
+};
+
+type Props = {
+	name: string;
+	title: string;
+	options?: RegisterOptions;
+	choices: RadioOption[];
+};
+
+const RadioInput = ({ name, title, options, choices }: Props): ReactElement => {
+	const { register } = useFormContext();
+
+	return (
+		<div className={styles.container}>
+			<span>{title}</span>
+			<div className={styles.options}>
+				{choices.map((radio) => (
+					<label key={radio.value}>
+						<div className={styles.option}>
+							<input
+								{...register(name, options)}
+								name={name}
+								value={radio.value}
+								type="radio"
+							/>
+							<span>{radio.label}</span>
+						</div>
+					</label>
+				))}
+			</div>
+			<FormError name={name} />
+		</div>
+	);
+};
+
+export default RadioInput;

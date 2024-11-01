@@ -1,14 +1,28 @@
 {
 	"name": "@enrise/taskfile",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "A ./Taskfile is a task runner in plain and easy Bash. It adds a list of available tasks to your project.",
+	"license": "MIT",
 	"scripts": {
-		"format": "./Taskfile pre-commit",
-		"prepare": "husky install"
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Enrise/Taskfile.git"
+	"dependencies": {
+		"next": "^15",
+		"raw-loader": "^4.0.2",
+		"react": "19.0.0-rc-02c0e824-20241028",
+		"react-dom": "19.0.0-rc-02c0e824-20241028",
+		"react-hook-form": "^7"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^8",
+		"eslint-config-next": "^15",
+		"typescript": "^5"
 	},
 	"keywords": [
 		"bash",
@@ -24,17 +38,16 @@
 			"url": "https://rick.nu"
 		},
 		{
+			"name": "Enrise | Impact driven development",
+			"url": "https://enrise.com"
+		},
+		{
 			"name": "Contributors",
 			"url": "https://github.com/Enrise/Taskfile/graphs/contributors"
 		}
 	],
-	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/Enrise/Taskfile/issues"
 	},
-	"homepage": "https://github.com/Enrise/Taskfile#readme",
-	"devDependencies": {
-		"husky": "^8.0.1",
-		"prettier": "^2.7.1"
-	}
+	"homepage": "https://github.com/Enrise/Taskfile#readme"
 }

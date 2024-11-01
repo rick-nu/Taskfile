@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	flex-direction: row;
+	margin: 0 auto;
+	width: 100rem;
+	max-width: 100%;
+	gap: 4rem;
+	padding: 4rem;
+}
+
+.settingsWindow {
+	width: 25rem;
+	flex-shrink: 0;
+	max-width: 100%;
+}
+
+.outputWindow {
+	flex-grow: 1;
+}
