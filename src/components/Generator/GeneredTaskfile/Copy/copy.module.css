@@ -1,0 +1,26 @@
+.button {
+	position: sticky;
+	top: 0;
+	float:right;
+	background-color: #202020;
+	color: #505050;
+	border: 0.2rem solid #505050;
+	padding: 0.5rem 0;
+	border-radius: 0.2rem;
+	cursor: pointer;
+	width: 5rem;
+	height: 5rem;
+	font-size: 1rem;
+	font-weight: 700;
+	transition: color 500ms, border 500ms;
+}
+
+.button:hover {
+	color: #fff;
+	border-color: #fff;
+}
+
+.copied {
+	color: #2ac93f !important;
+	border-color: #2ac93f !important;
+}

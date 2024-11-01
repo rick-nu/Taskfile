@@ -6,14 +6,14 @@ const buildHeaderFunction = (title: string, fontName: Font = 'Shadow'): string =
 	const headerLines = buildHeader(title, fontName);
 
 	return `function banner {
-	echo -e "\${BLUE}"\\${headerLines.map((line, index) => `
+	echo -e "\${BLUE}\\n"\\${headerLines.map((line, index) => `
 	"${line}${index === headerLines.length - 1 ? '${RESET}"' : '\\n"\\'}`).join('')}
 }`;
 }
 
 export const buildHeader = (title: string, fontName: Font = 'Shadow'): string[] => {
 	const characters = String(title).toLowerCase().split('');
-	let lines: string[] = [];
+	const lines: string[] = [];
 	const font = fonts.find((font) => font.name === fontName);
 
 	if (!font) {
@@ -25,7 +25,7 @@ export const buildHeader = (title: string, fontName: Font = 'Shadow'): string[] 
 		lines.push('');
 	}
 
-	for (let character of characters) {
+	for (const character of characters) {
 		if (character === ' ') {
 			for (let index = 0; index < font.height; index++) {
 				lines[index] += '   ';
