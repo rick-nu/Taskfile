@@ -10,6 +10,19 @@
 
 .input {
 	display: block;
+	position: relative;
+	padding: 0.5rem;
+	background-color: #f0f0f0;
+	border-radius: 0.2rem;
+	border: 0;
+	width: 100%;
+	font-size: 1.1rem;
+	font-family: var(--font-text), sans-serif;
+}
+
+.input:focus,
+.input:active {
+	outline: 0.2rem solid #a1e1aa;
 }
 
 .error {
