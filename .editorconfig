@@ -10,3 +10,14 @@ insert_final_newline = true
 indent_style = tab
 indent_size = 4
 trim_trailing_whitespace = true
+tab_width = unset
+
+# Yaml should have 2 spaces due to its weird array structure
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Makes lists prettier in markdown files
+[*.md]
+indent_style = space
+indent_size = 2
