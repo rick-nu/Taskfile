@@ -1,3 +1,64 @@
 .container {
 
 }
+
+.options {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.option {
+	font-size: 1.1rem;
+}
+
+.option input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.option span {
+	position: relative;
+	display: block;
+	padding: 0.3rem 0.5rem 0.3rem 2rem;
+	background-color: #f0f0f0;
+	border-radius: 0.2rem;
+	cursor: pointer;
+	transition: background-color 500ms;
+}
+
+.option span:hover {
+	background-color: #a1e1aa;
+}
+
+.option span::before {
+	content: '';
+	background-color: #fff;
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	top: 50%;
+	left: 0.4rem;
+	transform: translateY(-50%);
+	border-radius: 1rem;
+}
+
+.option input:focus + span,
+.option input:active + span {
+	outline: 0.2rem solid #a1e1aa;
+}
+
+.option input:checked + span::after {
+	content: '';
+	background-color: #2ac93f;
+	width: 0.8rem;
+	height: 0.8rem;
+	position: absolute;
+	top: 50%;
+	left: 0.6rem;
+	transform: translateY(-50%);
+	border-radius: 1rem;
+}

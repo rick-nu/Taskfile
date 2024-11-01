@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
-set -eo pipefail
-
 # =========================================================
 # Taskfile gives you a set of quick tasks for your project
-# More info: https://enri.se/taskfile
+# More info: https://github.com/Enrise/Taskfile
 # =========================================================
 
+set -eo pipefail
 CURRENT_DIR=$(pwd)
 RED=$(printf '\033[31m')
 RESET=$(printf '\033[0m')
 
 while [ -d $CURRENT_DIR ] && [ $CURRENT_DIR != '/' ]; do
-	if [ -f ./Taskfile ]
+	if [ -f ./Taskfile ];
 	then
-		# Taskfile found, execute the given task
 		./Taskfile $@
 		exit $?
+	elif [ -f ./Makefile ]; then
+		echo -e "${RED}Found a Makefile instead of a Taskfile...${RESET}\n"
+		make $@
+		exit $?
 	else
-		# Taskfile not found, trying the parent directory
 		cd ../
 		CURRENT_DIR=$(pwd)
 	fi
