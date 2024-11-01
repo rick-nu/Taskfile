@@ -9,6 +9,8 @@
 
 .settingsWindow {
 	width: 25rem;
+	flex-shrink: 0;
+	max-width: 100%;
 }
 
 .outputWindow {

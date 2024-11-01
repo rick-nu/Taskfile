@@ -1,6 +1,7 @@
-export const taskfile = (): string => `#!/bin/bash
-set -eo pipefail
+import {GeneratorSettings} from "@/components/Generator";
+import buildHeaderFunction from "./buildHeader";
 
+export const taskfile = (settings: GeneratorSettings): string => `#!/bin/bash
 # =========================================================
 # Taskfile gives you a set of quick tasks for your project
 # More info: https://github.com/Enrise/Taskfile
@@ -12,6 +13,8 @@ set -eo pipefail
 ## Taskfile
 # =========================================================
 
+set -eo pipefail
+
 BLUE=$(printf '\\033[36m')
 YELLOW=$(printf '\\033[33m')
 RED=$(printf '\\033[31m')
@@ -22,9 +25,7 @@ function title {
 	echo -e "\\n\${BLUE}=>\${RESET} $1\\n"
 }
 
-function banner {
-	echo -e "\${BLUE}TITLE HERE\${RESET}"
-}
+${buildHeaderFunction(settings.project || 'Taskfile', settings.font)}
 
 function task:help { ## Show all available tasks
 	title "Available tasks"
