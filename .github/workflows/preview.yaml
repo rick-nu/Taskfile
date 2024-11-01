@@ -15,12 +15,8 @@ jobs:
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Manual npm config set legacy-peer-deps true
+      - name: Allow install of beta dependencies
         run: npm config set legacy-peer-deps true
-      - name: Manual npm install
-        run: npm install
-      - name: Manual npm run build
-        run: npm run build
       - name: Build Project Artifacts
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
