@@ -1,5 +1,6 @@
 import rubiFont from './ascii/rubi.txt';
 import shadowFont from './ascii/shadow.txt';
+import usaFont from './ascii/usa.txt';
 
 const buildHeaderFunction = (title: string, fontName: Font = 'Shadow'): string => {
 	const headerLines = buildHeader(title, fontName);
@@ -57,7 +58,7 @@ type ASCII = {
 	characters: string;
 }
 
-const fontCharacters = 'abcdefghijklmnopqrstuvwxyz?!-._';
+const fontCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789?!-._';
 const fonts: ASCII[] = [
 	{
 		name: 'Rubi',
@@ -68,6 +69,11 @@ const fonts: ASCII[] = [
 		name: 'Shadow',
 		height: 6,
 		characters: shadowFont,
+	},
+	{
+		name: 'USA',
+		height: 5,
+		characters: usaFont,
 	}
 ]
 

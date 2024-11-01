@@ -7,7 +7,30 @@ export const taskfile = (settings: GeneratorSettings): string => `#!/bin/bash
 # More info: https://github.com/Enrise/Taskfile
 # =========================================================
 
-# TODO...
+${buildHeaderFunction(settings.project || 'Taskfile', settings.font)}
+
+# =========================================================
+## Project
+# =========================================================
+
+function task:init { ## Initialise the project for local development
+	project:update
+	task:help
+}
+
+function task:start { ## Start the project in development mode
+	title "Run development application"
+	# TODO: run
+}
+
+function task:update { ## Update all dependencies and files
+	project:update
+}
+
+function project:update {
+	title "Run project updates"
+	# TODO: install updates
+}
 
 # =========================================================
 ## Taskfile
@@ -24,8 +47,6 @@ RESET=$(printf '\\033[0m')
 function title {
 	echo -e "\\n\${BLUE}=>\${RESET} $1\\n"
 }
-
-${buildHeaderFunction(settings.project || 'Taskfile', settings.font)}
 
 function task:help { ## Show all available tasks
 	title "Available tasks"

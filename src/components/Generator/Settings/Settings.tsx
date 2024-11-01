@@ -23,8 +23,12 @@ const Settings = (): ReactElement => {
 						value: 'Rubi',
 					},
 					{
-						label: 'Shadow',
+						label: 'ANSI Shadow',
 						value: 'Shadow',
+					},
+					{
+						label: 'USA flag',
+						value: 'USA',
 					},
 				]}
 			/>
