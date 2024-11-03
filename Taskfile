@@ -75,14 +75,16 @@ function task:production { ## Build and run production output
 }
 
 # Todo: Token als je meerdere Jira-omgevingen hebt
+# TODO[Johan] Was er een reden dat we een project-specifiek token maakte? Zo nee, dan "default token gebruiken" afmaken
 function task:jira:init {
     title "Setting up Jira integration"
-    mkdir -p ~/.config/.jira
-    if [ ! -f ~/.config/.jira/token ]; then
+    # shellcheck disable=SC2046
+    if [ ! $(jira me) ]; then
         echo "In order to interact with Jira from the terminal you need to create an API token."
         gum confirm "Open your browser to generate a Jira token?" && open https://id.atlassian.com/manage-profile/security/api-tokens
         token=$(gum input --placeholder="Paste Jira token here" --password)
-        echo "JIRA_API_TOKEN='$token'" >  ~/.config/.jira/token
+        export JIRA_API_TOKEN="$token"
+        jira init
         task:restart
 
     fi
