@@ -1,7 +1,55 @@
 import {GeneratorSettings} from "@/components/Generator";
 import buildHeaderFunction from "./buildHeader";
 
-export const taskfile = (settings: GeneratorSettings): string => `#!/bin/bash
+type TaskfileAddons = {
+	initFunctionAppend: string[];
+	initFunctionPrepend: string[];
+	startFunction: string[];
+	updateFunction: string[];
+	customSections: string[];
+	utilitySection: string[];
+	globals: string[];
+}
+
+const renderAddonFragment = (addonFragment: string[], fallback: string): string => {
+	if (addonFragment.length > 0) {
+		return addonFragment.join('');
+	}
+
+	return fallback;
+}
+
+const renderUtilities = (utilities: string[]): string => {
+	if (utilities.length > 0) {
+		return `
+
+# =========================================================
+# Utilities
+# =========================================================
+
+${utilities.join(`
+`)}`;
+	}
+
+	return '';
+}
+
+export const taskfile = (settings: GeneratorSettings): string => {
+	const addons: TaskfileAddons = {
+		initFunctionAppend: [],
+		initFunctionPrepend: [],
+		startFunction: [],
+		updateFunction: [],
+		customSections: [],
+		utilitySection: [],
+		globals: [],
+	}
+
+	// TODO: create function that allows to add to the arrays above
+
+	// TODO: process custom functions for the docker choice
+
+	return `#!/bin/bash
 # =========================================================
 # Taskfile gives you a set of quick tasks for your project
 # More info: https://github.com/Enrise/Taskfile
@@ -14,13 +62,15 @@ ${buildHeaderFunction(settings.project || 'Taskfile', settings.font)}
 # =========================================================
 
 function task:init { ## Initialise the project for local development
+	${renderAddonFragment(addons.initFunctionAppend, `# TODO: Add project preparation checks here`)}
 	project:update
+	${renderAddonFragment(addons.initFunctionPrepend, `# TODO: Add commands to complete initialisation here`)}
 	task:help
 }
 
 function task:start { ## Start the project in development mode
 	title "Run development application"
-	# TODO: run
+	${renderAddonFragment(addons.startFunction, `# TODO: Add commands to start your local project here`)}
 }
 
 function task:update { ## Update all dependencies and files
@@ -29,8 +79,17 @@ function task:update { ## Update all dependencies and files
 
 function project:update {
 	title "Run project updates"
-	# TODO: install updates
+	${renderAddonFragment(addons.updateFunction, `# TODO: Add project udpate commands here`)}
 }
+${renderAddonFragment(addons.customSections, `
+# =========================================================
+## Custom section
+# =========================================================
+
+function task:custom { ## This is a custom task definition
+	title "Custom function"
+	echo -e "\${YELLOW}"Add your custom sections here\${RESET}";
+}`)}${renderUtilities(addons.utilitySection)}
 
 # =========================================================
 ## Taskfile
@@ -43,6 +102,8 @@ YELLOW=$(printf '\\033[33m')
 RED=$(printf '\\033[31m')
 GREEN=$(printf '\\033[32m')
 RESET=$(printf '\\033[0m')
+
+${renderAddonFragment(addons.globals, `# This is where you define global variables`)}
 
 function title {
 	echo -e "\\n\${BLUE}=>\${RESET} $1\\n"
@@ -74,3 +135,4 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 banner
 if [[ "$(declare -fF task:\${@-help})" ]]; then task:\${@-help}; else task:help; exit 1; fi
 `;
+}

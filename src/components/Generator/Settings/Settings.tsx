@@ -32,6 +32,25 @@ const Settings = (): ReactElement => {
 					},
 				]}
 			/>
+			<RadioInput
+				name="runtime"
+				title="How do you run your project?"
+				choices={[
+					{
+						label: 'Local commands',
+						value: 'local',
+					},
+					{
+						label: 'Docker compose',
+						value: 'docker-compose',
+					},
+					{
+						label: 'Docker compose with development proxy',
+						value: 'docker-compose-dev',
+					},
+				]}
+				flat
+			/>
 		</div>
 	)
 }

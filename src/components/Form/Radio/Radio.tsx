@@ -15,15 +15,16 @@ type Props = {
 	title: string;
 	options?: RegisterOptions;
 	choices: RadioOption[];
+	flat?: boolean;
 };
 
-const RadioInput = ({ name, title, options, choices }: Props): ReactElement => {
+const RadioInput = ({ name, title, options, choices, flat = false }: Props): ReactElement => {
 	const { register } = useFormContext();
 
 	return (
 		<div className={styles.container}>
 			<span>{title}</span>
-			<div className={styles.options}>
+			<div className={`${styles.options} ${flat && styles.flat}`}>
 				{choices.map((radio) => (
 					<label key={radio.value}>
 						<div className={styles.option}>

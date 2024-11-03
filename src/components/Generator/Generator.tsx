@@ -7,12 +7,13 @@ import styles from './generator.module.css';
 import { useForm } from 'react-hook-form';
 import Settings from './Settings';
 import GeneratedTaskfile from './GeneredTaskfile';
-import Form from "@/components/Form";
-import {Font} from "./GeneredTaskfile/buildHeader";
+import Form from '@/components/Form';
+import { Font } from './GeneredTaskfile/buildHeader';
 
 export type GeneratorSettings = {
 	project: string;
 	font: Font;
+	runtime: 'local' | 'docker-compose' | 'docker-compose-dev';
 }
 
 const Generator = (): ReactElement => {
@@ -21,7 +22,7 @@ const Generator = (): ReactElement => {
 		defaultValues: {
 			project: 'Taskfile',
 			font: 'Shadow',
-		}
+		},
 	});
 
 	return (
@@ -31,7 +32,7 @@ const Generator = (): ReactElement => {
 				<Window className={styles.outputWindow} dark><GeneratedTaskfile /></Window>
 			</div>
 		</Form>
-	)
-}
+	);
+};
 
 export default Generator;

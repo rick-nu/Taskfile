@@ -1,12 +1,12 @@
-.container {
-
-}
-
 .options {
 	display: flex;
 	flex-direction: row;
 	gap: 0.5rem;
 	flex-wrap: wrap;
+}
+
+.flat {
+	flex-direction: column;
 }
 
 .option {
