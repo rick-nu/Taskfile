@@ -1,9 +1,12 @@
 import {GeneratorSettings} from "@/components/Generator";
 import buildHeaderFunction from "./buildHeader";
+import buildAddonRuntime from './addons/runtime';
+import { renderAddonFragment, renderUtilities } from './helpers';
 
-type TaskfileAddons = {
+export type TaskfileAddons = {
 	initFunctionAppend: string[];
 	initFunctionPrepend: string[];
+	projectSection: string[];
 	startFunction: string[];
 	updateFunction: string[];
 	customSections: string[];
@@ -11,33 +14,11 @@ type TaskfileAddons = {
 	globals: string[];
 }
 
-const renderAddonFragment = (addonFragment: string[], fallback: string): string => {
-	if (addonFragment.length > 0) {
-		return addonFragment.join('');
-	}
-
-	return fallback;
-}
-
-const renderUtilities = (utilities: string[]): string => {
-	if (utilities.length > 0) {
-		return `
-
-# =========================================================
-# Utilities
-# =========================================================
-
-${utilities.join(`
-`)}`;
-	}
-
-	return '';
-}
-
 export const taskfile = (settings: GeneratorSettings): string => {
 	const addons: TaskfileAddons = {
 		initFunctionAppend: [],
 		initFunctionPrepend: [],
+		projectSection: [],
 		startFunction: [],
 		updateFunction: [],
 		customSections: [],
@@ -45,9 +26,7 @@ export const taskfile = (settings: GeneratorSettings): string => {
 		globals: [],
 	}
 
-	// TODO: create function that allows to add to the arrays above
-
-	// TODO: process custom functions for the docker choice
+	buildAddonRuntime(settings, addons);
 
 	return `#!/bin/bash
 # =========================================================
@@ -69,8 +48,8 @@ function task:init { ## Initialise the project for local development
 }
 
 function task:start { ## Start the project in development mode
-	title "Run development application"
-	${renderAddonFragment(addons.startFunction, `# TODO: Add commands to start your local project here`)}
+	${renderAddonFragment(addons.startFunction, `title "Run development application"
+	# TODO: Add commands to start your local project here`)}
 }
 
 function task:update { ## Update all dependencies and files
@@ -78,11 +57,13 @@ function task:update { ## Update all dependencies and files
 }
 
 function project:update {
-	title "Run project updates"
-	${renderAddonFragment(addons.updateFunction, `# TODO: Add project udpate commands here`)}
+	${renderAddonFragment(addons.updateFunction, `title "Run project updates"
+	# TODO: Add project udpate commands here`)}
 }
-${renderAddonFragment(addons.customSections, `
-# =========================================================
+
+${renderAddonFragment(addons.projectSection, `# TODO: Add more project specific commands here`)}
+
+${renderAddonFragment(addons.customSections, `# =========================================================
 ## Custom section
 # =========================================================
 
