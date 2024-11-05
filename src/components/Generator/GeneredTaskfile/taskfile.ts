@@ -1,10 +1,11 @@
 import {GeneratorSettings} from "@/components/Generator";
 import buildHeaderFunction from "./buildHeader";
-import { renderAddonFragment, renderUtilities } from './helpers';
-import loadTemplate from '@/components/Generator/loadTemplate';
+import { renderUtilities } from './helpers';
+import loadTemplate from '@/helpers/loadTemplate';
 import taskfileBase from './taskfile-base.sh';
 import customSection from './custom-section.sh';
-import renderAddons from '@/components/Generator/GeneredTaskfile/addons/addons';
+import renderAddons from './addons';
+import renderFragment from '@/helpers/renderFragment';
 
 export type TaskfileAddons = {
 	initCheckCommands: string[];
@@ -35,23 +36,26 @@ export const taskfile = (settings: GeneratorSettings): string => {
 
 	return loadTemplate(taskfileBase, {
 		header: buildHeaderFunction(settings.project || 'Taskfile', settings.font),
-		initCheckCommands: renderAddonFragment(
+		initCheckCommands: renderFragment(
 			addons.initCheckCommands,
-			`# Add checks to see if the project is ready for initialisation here`
+			`# Add checks to see if the project is ready for initialisation`,
+			true
 		),
-		preInitCommands: renderAddonFragment(addons.preInitCommands, `# Add project preparation commands here`),
-		postInitCommands: renderAddonFragment(addons.postInitCommands, `# Finalize setting up the project`),
-		startCommands: renderAddonFragment(
+		preInitCommands: renderFragment(addons.preInitCommands, `# Add project preparation commands here`, true),
+		postInitCommands: renderFragment(addons.postInitCommands, `# Finalize setting up the project`, true),
+		startCommands: renderFragment(
 			addons.startCommands,
-			'title "Run development application"\n\t# TODO: Add start commands'
+			'title "Run development application"\n\t# TODO: Add start commands',
+			true,
 		),
-		updateCommands: renderAddonFragment(
+		updateCommands: renderFragment(
 			addons.updateCommands,
-			'title "Run project updates"\n\t# TODO: Add project update commands here'
+			'title "Run project updates"\n\t# TODO: Add project update commands here',
+			true,
 		),
-		projectFunctions: renderAddonFragment(addons.projectFunctions, '# Add more project specific functions here'),
-		customSections: renderAddonFragment(addons.customSections, loadTemplate(customSection)),
+		projectFunctions: renderFragment(addons.projectFunctions, '# Add more project specific functions here'),
+		customSections: renderFragment(addons.customSections, loadTemplate(customSection)),
 		utilitySection: renderUtilities(addons.utilityFunctions),
-		globals: renderAddonFragment(addons.globals, `# Define global variables here`),
+		globals: renderFragment(addons.globals, `# Define global variables here`),
 	});
 }
