@@ -10,7 +10,8 @@ const runtime = (settings: GeneratorSettings, addon: TaskfileAddons): void => {
 		return;
 	}
 
-	const network = slugify(`${settings.project || 'my-project'}-network`);
+	const project = slugify(settings.project || 'my-project');
+	const network = `${project}-network`;
 
 	addon.preInitCommands.push('task:build');
 	addon.preInitCommands.push('task:start');
@@ -19,9 +20,13 @@ const runtime = (settings: GeneratorSettings, addon: TaskfileAddons): void => {
 
 	addon.projectFunctions.push(loadTemplate(dockerComposeProjectSection));
 
-	addon.customSections.push(loadTemplate(dockerComposeSection));
+	addon.customSections.push(loadTemplate(dockerComposeSection, {project}));
 
-	addon.globals.push(`USERID=\$(id -u)\nGROUPID=\$(id -g)\nNETWORK="${network}"`)
+	addon.globals.push(`USERID=\$(id -u)\nGROUPID=\$(id -g)\nNETWORK="${network}"`);
+
+	if (settings.developmentProxy) {
+		addon.customSections.push('# GENERATOR TODO: Add development proxy section to extend docker');
+	}
 }
 
 export default runtime;

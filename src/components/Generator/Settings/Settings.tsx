@@ -7,6 +7,7 @@ import TextInput from "@/components/Form/Text";
 import RadioInput from "@/components/Form/Radio";
 import { useFormContext } from 'react-hook-form';
 import { GeneratorSettings } from '@/components/Generator';
+import Checkbox from '@/components/Form/Checkbox';
 
 const Settings = (): ReactElement => {
 	const form = useFormContext<GeneratorSettings>();
@@ -52,7 +53,11 @@ const Settings = (): ReactElement => {
 				]}
 			/>
 			{settings.runtime === 'docker-compose' && (
-				<p>Development proxy?</p>
+				<Checkbox name="developmentProxy">
+					Include the docker{' '}
+					<a href="https://github.com/Enrise/DevelopmentProxy/" target="_blank">development proxy</a>{' '}
+					for local domains instead of ports
+				</Checkbox>
 			)}
 		</div>
 	)

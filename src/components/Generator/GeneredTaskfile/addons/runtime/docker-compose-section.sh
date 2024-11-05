@@ -18,7 +18,7 @@ function docker:stop {
 }
 
 function task:logs { ## Show the docker compose logs
-	title "Showing local logs"
+	title "Following local logs"
 	dockercompose logs --tail="20" --follow
 }
 
@@ -36,5 +36,5 @@ function docker:assert-running {
 }
 
 function dockercompose {
-	USERID=$USERID GROUPID=$GROUPID docker compose --file ./dev/docker-compose.yml --project-name piano-player "$@"
+	USERID=$USERID GROUPID=$GROUPID docker compose --file ./dev/docker-compose.yml --project-name [[project]] "$@"
 }

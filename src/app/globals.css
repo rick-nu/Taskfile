@@ -16,3 +16,12 @@ pre {
 	tab-size: 4;
 	font-family: var(--font-code), monospace;
 }
+
+a {
+	color: #0068bc;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}

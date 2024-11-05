@@ -13,7 +13,8 @@ import { Font } from './GeneredTaskfile/buildHeader';
 export type GeneratorSettings = {
 	project: string;
 	font: Font;
-	runtime: 'local' | 'docker-compose' | 'docker-compose-dev';
+	runtime: 'local' | 'docker-compose';
+	developmentProxy: boolean;
 }
 
 const Generator = (): ReactElement => {
