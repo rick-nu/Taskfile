@@ -1,9 +1,9 @@
-export const renderAddonFragment = (addonFragment: string[], fallback: string): string => {
+export const renderAddonFragment = (addonFragment: string[], fallback?: string): string => {
 	if (addonFragment.length > 0) {
 		return addonFragment.join("\n\n");
 	}
 
-	return fallback;
+	return fallback ?? '';
 }
 
 export const renderUtilities = (utilities: string[]): string => {

@@ -5,8 +5,13 @@ import { ReactElement } from 'react';
 import styles from './settings.module.css';
 import TextInput from "@/components/Form/Text";
 import RadioInput from "@/components/Form/Radio";
+import { useFormContext } from 'react-hook-form';
+import { GeneratorSettings } from '@/components/Generator';
 
 const Settings = (): ReactElement => {
+	const form = useFormContext<GeneratorSettings>();
+	const settings = form.watch();
+
 	return (
 		<div className={styles.container}>
 			<TextInput
@@ -44,13 +49,11 @@ const Settings = (): ReactElement => {
 						label: 'Docker compose',
 						value: 'docker-compose',
 					},
-					{
-						label: 'Docker compose with development proxy',
-						value: 'docker-compose-dev',
-					},
 				]}
-				flat
 			/>
+			{settings.runtime === 'docker-compose' && (
+				<p>Development proxy?</p>
+			)}
 		</div>
 	)
 }

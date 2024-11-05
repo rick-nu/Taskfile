@@ -22,6 +22,7 @@ const Generator = (): ReactElement => {
 		defaultValues: {
 			project: 'Taskfile',
 			font: 'Shadow',
+			runtime: 'local',
 		},
 	});
 

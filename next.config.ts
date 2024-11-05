@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
 	output: 'export',
 	webpack: (config) => {
 		config.module.rules.push({
-			test: /\.txt$/i,
+			test: /\.(txt|sh)$/i,
 			use: 'raw-loader',
 		});
 
