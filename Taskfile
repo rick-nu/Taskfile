@@ -74,6 +74,44 @@ function task:production { ## Build and run production output
 	docker run --rm --publish 3089:80 --name tasksite --volume ./out:/var/www nstapelbroek/static-webserver:5
 }
 
+# Todo: Token als je meerdere Jira-omgevingen hebt
+# TODO[Johan] Was er een reden dat we een project-specifiek token maakte? Zo nee, dan "default token gebruiken" afmaken
+function task:jira:init {
+    title "Setting up Jira integration"
+    # shellcheck disable=SC2046
+    if [ ! $(jira me) ]; then
+        echo "In order to interact with Jira from the terminal you need to create an API token."
+        gum confirm "Open your browser to generate a Jira token?" && open https://id.atlassian.com/manage-profile/security/api-tokens
+        token=$(gum input --placeholder="Paste Jira token here" --password)
+        export JIRA_API_TOKEN="$token"
+        jira init
+        task:restart
+
+    fi
+    if [ ! -f ~/.config/.jira/mcmain.yml ]; then
+        docker:exec api "jira init --installation cloud --server https://enrise.atlassian.net --project MCMAIN --board 'MCMAIN board' --config ~/.config/.jira/mcmain.yml"
+    else
+        echo Jira set up correctly
+    fi
+}
+
+function task:jira { ## Run jira commands
+    docker:exec api "jira --config ~/.config/.jira/mcmain.yml $*"
+}
+
+function task:jira:status { ## Move the ticket to a status
+    ## Branch & open new MR
+    issue=$(git branch --show-current)
+    docker:exec api "jira --config ~/.config/.jira/mcmain.yml issue move $issue"
+    docker:exec api "jira --config ~/.config/.jira/mcmain.yml issue assign $issue"
+}
+
+function task:jira:web { ## Open the ticket in your browser
+    ticket=$(git branch --show-current)
+    open https://enrise.atlassian.net/browse/$ticket
+}
+
+
 # =========================================================
 ## Automation
 # =========================================================

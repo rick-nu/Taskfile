@@ -1,0 +1,24 @@
+# TODO[Johan] lokale overrides mogelijk maken
+
+# TODO[Johan] sub-taskfiles:
+	- gespecialiseerde groepjes tasks die je normaal niet in detail in het hoofd file wil
+	- voorbeelden: git-hooks, ci commando's, project specifieke dingen als cache/queue/shopware-plugin manupilatie
+	- een task in het hoofd-file
+	- als je die aanroept, is dat effectief "help" in het subfile
+	- als je die aanroept met een task uit het subfile er achter, roep je de task uit het subfile aan
+	- dus: `./Taskfile git-hooks pre-commit`
+	- of: `./Taskfile ci start-fold`
+
+# TODO[Johan] aliassen voor tasks (ie: init en install :-P)
+
+# TODO[Johan] taskmaster bespreken:
+	- prima als default alias 'task' is
+	- ook in bovenliggende mapjes zoeken
+	- shell completion hierin stoppen
+	- self-updaten door file opnieuw te downloaden van url
+	- commandotje er in doen om gehele Taskfiles te genereren / nieuwe modules te downloaden?
+
+# TODO[Johan] Makefile convertor maken?
+
+# TODO[Johan] taskfile.sh claimen
+
