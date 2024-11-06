@@ -20,7 +20,8 @@ Generate your own Taskfile at [TaskfileGenerator.com](https://taskfilegenerator.
 This Taskfile setup is based on
 [Adrian Cooney's Taskfile](https://github.com/adriancooney/Taskfile).
 
-# Contribute
+# Contributors
 
-Feel free to add your own Taskfile tasks via a PR. The more usefull tasks, the easier we make the
-life of other developers.
+A big thanks to all the contributors of Taskfile!
+
+![contirubtor avatars](https://contrib.rocks/image?repo=enrise/taskfile)
