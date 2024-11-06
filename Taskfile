@@ -80,15 +80,15 @@ function task:prettier { ## Prettify all files
 	prettier --config dev/linting/.prettierrc.json --ignore-path dev/linting/.prettierignore --write --list-different . && echo 'All good.'
 }
 
-function task:eslint { ## Prettify all files
-	title "Linting typescript logic"
-	echo "Prettifying files..."
+function task:eslint { ## Check typescript logic
+	title "ESLint"
+	echo "Checking typescript logic..."
 	eslint --config dev/linting/eslint.config.mjs . && echo 'All good.'
 }
 
-function task:typescript { ## Prettify all files
-	title "Checking typescript types"
-	echo "Checking typescript..."
+function task:typescript { ## Check typescript types
+	title "Typescript type check"
+	echo "Checking typescript types..."
 	tsc --noEmit --project . --pretty && echo 'All good.'
 }
 
