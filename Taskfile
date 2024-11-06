@@ -77,15 +77,19 @@ function task:production { ## Build and run production output
 function task:prettier { ## Prettify all files
 	title "Running prettier"
 	echo "Prettifying files..."
-	prettier --config dev/linting/.prettierrc.json --ignore-path dev/linting/.prettierignore --write --list-different .
-	echo "Done."
+	prettier --config dev/linting/.prettierrc.json --ignore-path dev/linting/.prettierignore --write --list-different . && echo 'All good.'
 }
 
 function task:eslint { ## Prettify all files
 	title "Linting typescript logic"
 	echo "Prettifying files..."
-	eslint --config dev/linting/eslint.config.mjs .
-	echo "Done."
+	eslint --config dev/linting/eslint.config.mjs . && echo 'All good.'
+}
+
+function task:typescript { ## Prettify all files
+	title "Checking typescript types"
+	echo "Checking typescript..."
+	tsc --noEmit --project . --pretty && echo 'All good.'
 }
 
 # =========================================================
@@ -95,6 +99,7 @@ function task:eslint { ## Prettify all files
 function task:pre-commit { ## Clean up code before committing
 	task:prettier
 	task:eslint
+	task:typescript
 	title "Comitting"
 }
 
