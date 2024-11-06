@@ -1,6 +1,6 @@
 type TemplateVariables = {
 	[variable: string]: string;
-}
+};
 
 /**
  *
@@ -21,9 +21,9 @@ const loadTemplate = (file: string, variables?: TemplateVariables): string => {
 	}
 
 	// Get rid of excessive enters because if template imports
-	file = file.replaceAll('\n\n\n', '\n\n')
+	file = file.replaceAll('\n\n\n', '\n\n');
 
 	return file;
-}
+};
 
 export default loadTemplate;

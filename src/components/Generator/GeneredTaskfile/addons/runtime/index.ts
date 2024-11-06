@@ -1,1 +1,1 @@
-export {default} from './runtime'
+export { default } from './runtime';

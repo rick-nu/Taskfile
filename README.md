@@ -1,7 +1,7 @@
 # Taskfile ([TaskfileGenerator.com](https://taskfilegenerator.com))
 
-A `./Taskfile` is a task runner in plain and easy [Bash](https://nl.wikipedia.org/wiki/Bash). It
-adds a list of available tasks to your project.
+A `./Taskfile` is a task runner in plain and easy [Bash](https://nl.wikipedia.org/wiki/Bash). It adds a list of
+available tasks to your project.
 
 Generate your own Taskfile at [TaskfileGenerator.com](https://taskfilegenerator.com).
 
@@ -9,18 +9,17 @@ Generate your own Taskfile at [TaskfileGenerator.com](https://taskfilegenerator.
 
 ## Why
 
--   Works on any OS (any bash terminal)
--   A uniform way to run your projects
--   Very easy to use
--   Automate your most common tasks (updating, starting, building, etc...)
--   Easy to understand and maintain
--   Automatically generated list of available task
+- Works on any OS (any bash terminal)
+- A uniform way to run your projects
+- Very easy to use
+- Automate your most common tasks (updating, starting, building, etc...)
+- Easy to understand and maintain
+- Automatically generated list of available task
 
 ## Credits
 
-This Taskfile setup is based on
-[Adrian Cooney's Taskfile](https://github.com/adriancooney/Taskfile) and is widely adopted by
-[Enrise](https://enrise.com) in our modified flavour.
+This Taskfile setup is based on [Adrian Cooney's Taskfile](https://github.com/adriancooney/Taskfile) and is widely
+adopted by [Enrise](https://enrise.com) in our modified flavour.
 
 ## Contributors
 

@@ -6,10 +6,14 @@ const buildHeaderFunction = (title: string, fontName: Font = 'Shadow'): string =
 	const headerLines = buildHeader(title, fontName);
 
 	return `function banner {
-	echo -e "\${BLUE}\\n"\\${headerLines.map((line, index) => `
-	"${line}${index === headerLines.length - 1 ? '${RESET}"' : '\\n"\\'}`).join('')}
+	echo -e "\${BLUE}\\n"\\${headerLines
+		.map(
+			(line, index) => `
+	"${line}${index === headerLines.length - 1 ? '${RESET}"' : '\\n"\\'}`
+		)
+		.join('')}
 }`;
-}
+};
 
 export const buildHeader = (title: string, fontName: Font = 'Shadow'): string[] => {
 	const characters = String(title).toLowerCase().split('');
@@ -20,7 +24,7 @@ export const buildHeader = (title: string, fontName: Font = 'Shadow'): string[] 
 		return [];
 	}
 
-	const fontArt = String(font.characters).split("\n");
+	const fontArt = String(font.characters).split('\n');
 	for (let _ = 0; _ < font.height; _++) {
 		lines.push('');
 	}
@@ -48,15 +52,15 @@ export const buildHeader = (title: string, fontName: Font = 'Shadow'): string[] 
 	}
 
 	return lines;
-}
+};
 
 export type Font = 'Rubi' | 'Shadow';
 
 type ASCII = {
-	name: string,
+	name: string;
 	height: number;
 	characters: string;
-}
+};
 
 const fontCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789?!-._';
 const fonts: ASCII[] = [
@@ -74,7 +78,7 @@ const fonts: ASCII[] = [
 		name: 'USA',
 		height: 5,
 		characters: usaFont,
-	}
-]
+	},
+];
 
 export default buildHeaderFunction;

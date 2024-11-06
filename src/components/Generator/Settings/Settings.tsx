@@ -3,8 +3,8 @@
 import { ReactElement } from 'react';
 
 import styles from './settings.module.css';
-import TextInput from "@/components/Form/Text";
-import RadioInput from "@/components/Form/Radio";
+import TextInput from '@/components/Form/Text';
+import RadioInput from '@/components/Form/Radio';
 import { useFormContext } from 'react-hook-form';
 import { GeneratorSettings } from '@/components/Generator';
 import Checkbox from '@/components/Form/Checkbox';
@@ -18,7 +18,7 @@ const Settings = (): ReactElement => {
 			<TextInput
 				title="Project name"
 				name="project"
-				options={{maxLength: {value: 14, message: 'Project name should not be too long'}}}
+				options={{ maxLength: { value: 14, message: 'Project name should not be too long' } }}
 			/>
 			<RadioInput
 				name="font"
@@ -55,7 +55,9 @@ const Settings = (): ReactElement => {
 			{settings.runtime === 'docker-compose' && (
 				<Checkbox name="developmentProxy">
 					Include the docker{' '}
-					<a href="https://github.com/Enrise/DevelopmentProxy/" target="_blank">development proxy</a>{' '}
+					<a href="https://github.com/Enrise/DevelopmentProxy/" target="_blank">
+						development proxy
+					</a>{' '}
 					for local domains instead of ports
 				</Checkbox>
 			)}
@@ -77,11 +79,9 @@ const Settings = (): ReactElement => {
 					},
 				]}
 			/>
-			<Checkbox name="linkGitHooks">
-				Create git hooks symlink
-			</Checkbox>
+			<Checkbox name="linkGitHooks">Create git hooks symlink</Checkbox>
 		</div>
-	)
-}
+	);
+};
 
 export default Settings;

@@ -1,5 +1,5 @@
-import {GeneratorSettings} from "@/components/Generator";
-import buildHeaderFunction from "./buildHeader";
+import { GeneratorSettings } from '@/components/Generator';
+import buildHeaderFunction from './buildHeader';
 import { renderUtilities } from './helpers';
 import loadTemplate from '@/helpers/loadTemplate';
 import taskfileBase from './taskfile-base.sh';
@@ -17,7 +17,7 @@ export type TaskfileAddons = {
 	customSections: string[];
 	utilityFunctions: string[];
 	globals: string[];
-}
+};
 
 export const taskfile = (settings: GeneratorSettings): string => {
 	const addons: TaskfileAddons = {
@@ -30,7 +30,7 @@ export const taskfile = (settings: GeneratorSettings): string => {
 		customSections: [],
 		utilityFunctions: [],
 		globals: [],
-	}
+	};
 
 	renderAddons(settings, addons);
 
@@ -46,16 +46,16 @@ export const taskfile = (settings: GeneratorSettings): string => {
 		startCommands: renderFragment(
 			addons.startCommands,
 			'title "Run development application"\n\t# TODO: Add start commands',
-			true,
+			true
 		),
 		updateCommands: renderFragment(
 			addons.updateCommands,
 			'title "Run project updates"\n\t# TODO: Add project update commands here',
-			true,
+			true
 		),
 		projectFunctions: renderFragment(addons.projectFunctions, '# Add more project specific functions here'),
 		customSections: renderFragment(addons.customSections, loadTemplate(customSection)),
 		utilitySection: renderUtilities(addons.utilityFunctions),
 		globals: renderFragment(addons.globals, `# Define global variables here`),
 	});
-}
+};

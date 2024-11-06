@@ -20,6 +20,6 @@ const git = (settings: GeneratorSettings, addon: TaskfileAddons): void => {
 			addon.projectFunctions.push(loadTemplate(gitlabFunction));
 			break;
 	}
-}
+};
 
 export default git;

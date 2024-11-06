@@ -13,6 +13,6 @@ import git from './git';
 const renderAddons = (settings: GeneratorSettings, addons: TaskfileAddons): void => {
 	runtime(settings, addons);
 	git(settings, addons);
-}
+};
 
 export default renderAddons;

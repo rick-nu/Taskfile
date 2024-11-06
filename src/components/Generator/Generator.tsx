@@ -17,7 +17,7 @@ export type GeneratorSettings = {
 	developmentProxy: boolean;
 	checkoutGitRequest: 'none' | 'github' | 'gitlab';
 	linkGitHooks: boolean;
-}
+};
 
 const Generator = (): ReactElement => {
 	const form = useForm<GeneratorSettings>({
@@ -33,8 +33,12 @@ const Generator = (): ReactElement => {
 	return (
 		<Form form={form} onSubmit={form.handleSubmit(() => {})}>
 			<div className={styles.container}>
-				<Window className={styles.settingsWindow}><Settings /></Window>
-				<Window className={styles.outputWindow} dark><GeneratedTaskfile /></Window>
+				<Window className={styles.settingsWindow}>
+					<Settings />
+				</Window>
+				<Window className={styles.outputWindow} dark>
+					<GeneratedTaskfile />
+				</Window>
 			</div>
 		</Form>
 	);

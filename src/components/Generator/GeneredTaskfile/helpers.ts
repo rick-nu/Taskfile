@@ -6,8 +6,8 @@ export const renderUtilities = (utilities: string[]): string => {
 # Utilities
 # =========================================================
 
-${utilities.join("\n\n")}`;
+${utilities.join('\n\n')}`;
 	}
 
 	return '';
-}
+};

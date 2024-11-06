@@ -1,5 +1,5 @@
 import { HTMLAttributes, HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, ReactElement } from 'react';
-import {RegisterOptions, useFormContext} from 'react-hook-form';
+import { RegisterOptions, useFormContext } from 'react-hook-form';
 
 import FormError from '@/components/Form/Error';
 
@@ -13,7 +13,14 @@ type TextInputProps = {
 	autoComplete?: HTMLInputAutoCompleteAttribute;
 } & HTMLAttributes<HTMLInputElement>;
 
-const TextInput = ({ name, title, type = 'text', autoComplete, options, ...inputAttributes }: TextInputProps): ReactElement => {
+const TextInput = ({
+	name,
+	title,
+	type = 'text',
+	autoComplete,
+	options,
+	...inputAttributes
+}: TextInputProps): ReactElement => {
 	const form = useFormContext();
 
 	return (

@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 
 import styles from './radio.module.css';
-import FormError from "@/components/Form/Error";
+import FormError from '@/components/Form/Error';
 
 export type RadioOption = {
 	label: string;
@@ -28,12 +28,7 @@ const RadioInput = ({ name, title, options, choices, flat = false }: Props): Rea
 				{choices.map((radio) => (
 					<label key={radio.value}>
 						<div className={styles.option}>
-							<input
-								{...register(name, options)}
-								name={name}
-								value={radio.value}
-								type="radio"
-							/>
+							<input {...register(name, options)} name={name} value={radio.value} type="radio" />
 							<span>{radio.label}</span>
 						</div>
 					</label>

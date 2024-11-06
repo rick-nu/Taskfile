@@ -20,19 +20,21 @@ const runtime = (settings: GeneratorSettings, addon: TaskfileAddons): void => {
 
 	startCommands(settings, addon);
 
-	addon.projectFunctions.push(loadTemplate(dockerComposeProjectSection, {
-		stopCommands: renderFragment(stopCommands(settings), '', true),
-		restartCommands: renderFragment(restartCommands(settings), '', true),
-	}));
+	addon.projectFunctions.push(
+		loadTemplate(dockerComposeProjectSection, {
+			stopCommands: renderFragment(stopCommands(settings), '', true),
+			restartCommands: renderFragment(restartCommands(settings), '', true),
+		})
+	);
 
-	addon.customSections.push(loadTemplate(dockerComposeSection, {project}));
+	addon.customSections.push(loadTemplate(dockerComposeSection, { project }));
 
 	addon.globals.push(`USERID=\$(id -u)\nGROUPID=\$(id -g)\nNETWORK="${network}"`);
 
 	if (settings.developmentProxy) {
 		addon.customSections.push(loadTemplate(developmentProxySection));
 	}
-}
+};
 
 const startCommands = (settings: GeneratorSettings, addon: TaskfileAddons): void => {
 	if (settings.developmentProxy) {
@@ -44,7 +46,7 @@ const startCommands = (settings: GeneratorSettings, addon: TaskfileAddons): void
 	if (settings.developmentProxy) {
 		addon.startCommands.push('proxy:connect');
 	}
-}
+};
 
 const stopCommands = (settings: GeneratorSettings): string[] => {
 	const commands: string[] = [];
@@ -56,7 +58,7 @@ const stopCommands = (settings: GeneratorSettings): string[] => {
 	commands.push('docker:stop');
 
 	return commands;
-}
+};
 
 const restartCommands = (settings: GeneratorSettings): string[] => {
 	const commands = stopCommands(settings);
@@ -72,6 +74,6 @@ const restartCommands = (settings: GeneratorSettings): string[] => {
 	}
 
 	return commands;
-}
+};
 
 export default runtime;
