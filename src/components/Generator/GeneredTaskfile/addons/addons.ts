@@ -1,6 +1,8 @@
 import { GeneratorSettings } from '@/components/Generator';
 import { TaskfileAddons } from '@/components/Generator/GeneredTaskfile/taskfile';
+
 import runtime from './runtime';
+import git from './git';
 
 /**
  * Render addons for the Taskfile based on the generator settings
@@ -10,6 +12,7 @@ import runtime from './runtime';
  */
 const renderAddons = (settings: GeneratorSettings, addons: TaskfileAddons): void => {
 	runtime(settings, addons);
+	git(settings, addons);
 }
 
 export default renderAddons;

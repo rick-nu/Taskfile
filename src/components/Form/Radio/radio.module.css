@@ -43,7 +43,7 @@
 	top: 50%;
 	left: 0.4rem;
 	transform: translateY(-50%);
-	border-radius: 1rem;
+	border-radius: 50%;
 }
 
 .option input:focus + span,
@@ -60,5 +60,5 @@
 	top: 50%;
 	left: 0.6rem;
 	transform: translateY(-50%);
-	border-radius: 1rem;
+	border-radius: 50%;
 }

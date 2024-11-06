@@ -59,6 +59,27 @@ const Settings = (): ReactElement => {
 					for local domains instead of ports
 				</Checkbox>
 			)}
+			<RadioInput
+				name="checkoutGitRequest"
+				title="Checkout merge/pull request number"
+				choices={[
+					{
+						label: 'None',
+						value: 'none',
+					},
+					{
+						label: 'GitHub PR',
+						value: 'github',
+					},
+					{
+						label: 'GitLab MR',
+						value: 'gitlab',
+					},
+				]}
+			/>
+			<Checkbox name="linkGitHooks">
+				Create git hooks symlink
+			</Checkbox>
 		</div>
 	)
 }

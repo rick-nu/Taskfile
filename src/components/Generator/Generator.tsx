@@ -15,6 +15,8 @@ export type GeneratorSettings = {
 	font: Font;
 	runtime: 'local' | 'docker-compose';
 	developmentProxy: boolean;
+	checkoutGitRequest: 'none' | 'github' | 'gitlab';
+	linkGitHooks: boolean;
 }
 
 const Generator = (): ReactElement => {
@@ -24,6 +26,7 @@ const Generator = (): ReactElement => {
 			project: 'Taskfile',
 			font: 'Shadow',
 			runtime: 'local',
+			checkoutGitRequest: 'none',
 		},
 	});
 
