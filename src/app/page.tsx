@@ -2,7 +2,7 @@ import Generator from '@/components/Generator';
 import { Metadata } from 'next';
 
 export const generateMetadata = (): Metadata => ({
-	title: 'Taskfile generator',
+	title: 'Taskfile Generator',
 	description:
 		'Quickly kick start your project by moving all your development commands to one easy to understand and maintain place.',
 });
