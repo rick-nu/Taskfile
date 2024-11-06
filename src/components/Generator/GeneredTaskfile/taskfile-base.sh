@@ -49,16 +49,16 @@ RESET=$(printf '\\033[0m')
 [[globals]]
 
 function title {
-	echo -e "\\n\${BLUE}=>\${RESET} $1\\n"
+	echo -e "\n${BLUE}=>${RESET} $1\n"
 }
 
 function task:help { ## Show all available tasks
 	title "Available tasks"
-	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\\{ )?[#][#][ ]?/ \\
-		{printf "\\033[33m%-34s\\033[0m %s\\n", $1, $2}' $0 |\\
-		sed -E "s/[#]{2,}[ ]*/\${RESET}/g" |\\
+	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ \
+		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' $0 |\
+		sed -E "s/[#]{2,}[ ]*/${RESET}/g" |\
 		sed -E "s/function task:*/  /g"
-	echo -e "\\n\${BLUE}Usage:\${RESET} $0 \${YELLOW}<task>\${RESET} <args>"
+	echo -e "\n${BLUE}Usage:${RESET} $0 ${YELLOW}<task>${RESET} <args>"
 }
 
 function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
@@ -71,7 +71,7 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 		sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
 		sudo chmod +x /usr/local/bin/task
 	fi
-	echo -e "\${BLUE}You can now use:\${RESET} task \${YELLOW}<task>\${RESET} <args>"
+	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
 }
 
 banner
