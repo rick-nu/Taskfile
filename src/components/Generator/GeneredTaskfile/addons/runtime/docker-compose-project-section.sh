@@ -1,8 +1,7 @@
 function task:stop { ## Stop the local project
-	docker:stop
+	[[stopCommands]]
 }
 
 function task:restart { ## Restart the local project
-	docker:stop
-	docker:start
+	[[restartCommands]]
 }
