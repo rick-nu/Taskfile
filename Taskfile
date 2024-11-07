@@ -77,19 +77,22 @@ function task:production { ## Build and run production output
 function task:prettier { ## Prettify all files
 	title "Running prettier"
 	echo "Prettifying files..."
-	prettier --config dev/linting/.prettierrc.json --ignore-path dev/linting/.prettierignore --write --list-different . && echo 'All good.'
+	prettier --config dev/linting/.prettierrc.json --ignore-path dev/linting/.prettierignore --write --list-different . \
+		&& echo -e "All ${GREEN}good${RESET}."
 }
 
 function task:eslint { ## Check typescript logic
 	title "ESLint"
 	echo "Checking typescript logic..."
-	eslint --config dev/linting/eslint.config.mjs . && echo 'All good.'
+	eslint --config dev/linting/eslint.config.mjs . \
+		&& echo -e "All ${GREEN}good${RESET}."
 }
 
 function task:typescript { ## Check typescript types
 	title "Typescript type check"
 	echo "Checking typescript types..."
-	tsc --noEmit --project . --pretty && echo 'All good.'
+	tsc --noEmit --project . --pretty \
+		&& echo -e "All ${GREEN}good${RESET}."
 }
 
 # =========================================================

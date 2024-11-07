@@ -2,3 +2,4 @@
 .next/
 .github/
 *.yml
+out/
