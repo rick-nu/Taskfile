@@ -1,7 +1,7 @@
 .button {
 	position: sticky;
 	top: 0;
-	float:right;
+	float: right;
 	background-color: #202020;
 	color: #505050;
 	border: 0.2rem solid #505050;
@@ -12,7 +12,9 @@
 	height: 5rem;
 	font-size: 1rem;
 	font-weight: 700;
-	transition: color 500ms, border 500ms;
+	transition:
+		color 500ms,
+		border 500ms;
 }
 
 .button:hover {

@@ -19,6 +19,7 @@ function banner {
 # =========================================================
 
 function task:init { ## Set up the project for local development
+	project:git-config
 	task:update
 	task:help
 }
@@ -50,11 +51,10 @@ function project:install-dependencies {
 	npm install
 }
 
-function task:prettify { ## Prettify all files
-	title "Cleaning codestyle"
-	echo "Prettifying files..."
-	prettier --write --list-different .
-	echo "Done."
+function project:git-config {
+	title "Setting git configuration"
+	git config --local core.hooksPath dev/git-hooks
+	echo -e "Git hooks directory is set to ${YELLOW}./dev/git-hooks${RESET}."
 }
 
 # =========================================================
@@ -74,12 +74,35 @@ function task:production { ## Build and run production output
 	docker run --rm --publish 3089:80 --name tasksite --volume ./out:/var/www nstapelbroek/static-webserver:5
 }
 
+function task:prettier { ## Prettify all files
+	title "Running prettier"
+	echo "Prettifying files..."
+	prettier --config dev/linting/.prettierrc.json --ignore-path dev/linting/.prettierignore --write --list-different . \
+		&& echo -e "All ${GREEN}good${RESET}."
+}
+
+function task:eslint { ## Check typescript logic
+	title "ESLint"
+	echo "Checking typescript logic..."
+	eslint --config dev/linting/eslint.config.mjs . \
+		&& echo -e "All ${GREEN}good${RESET}."
+}
+
+function task:typescript { ## Check typescript types
+	title "Typescript type check"
+	echo "Checking typescript types..."
+	tsc --noEmit --project . --pretty \
+		&& echo -e "All ${GREEN}good${RESET}."
+}
+
 # =========================================================
 ## Automation
 # =========================================================
 
 function task:pre-commit { ## Clean up code before committing
-	task:prettify
+	task:prettier
+	task:eslint
+	task:typescript
 	title "Comitting"
 }
 
@@ -123,6 +146,11 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
 }
 
-# Execute tasks
 banner
-if [[ "$(declare -fF task:${@-help})" ]]; then task:${@-help}; else task:help; exit 1; fi
+if [[ ! "$(declare -F task:${@-help})" ]]; then
+	title "Task not found"
+	echo -e "Task ${YELLOW}$1${RESET} doesn't exist."
+	task:help
+	exit 1
+fi
+task:${@-help}

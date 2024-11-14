@@ -1,1 +1,1 @@
-export {default} from './GeneratedTaskfile';
+export { default } from './GeneratedTaskfile';

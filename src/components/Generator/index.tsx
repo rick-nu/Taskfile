@@ -1,2 +1,2 @@
-export {default} from './Generator';
-export { type GeneratorSettings } from './Generator'
+export { default } from './Generator';
+export { type GeneratorSettings } from './Generator';

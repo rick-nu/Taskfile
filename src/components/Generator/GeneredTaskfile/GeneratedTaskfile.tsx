@@ -2,9 +2,9 @@
 
 import { ReactElement } from 'react';
 import { taskfile } from '@/components/Generator/GeneredTaskfile/taskfile';
-import {useFormContext} from "react-hook-form";
-import {GeneratorSettings} from "@/components/Generator/Generator";
-import CopyToClipboard from "@/components/Generator/GeneredTaskfile/Copy";
+import { useFormContext } from 'react-hook-form';
+import { GeneratorSettings } from '@/components/Generator/Generator';
+import CopyToClipboard from '@/components/Generator/GeneredTaskfile/Copy';
 
 const GeneratedTaskfile = (): ReactElement => {
 	const form = useFormContext<GeneratorSettings>();
@@ -19,6 +19,6 @@ const GeneratedTaskfile = (): ReactElement => {
 			<pre>{resultTaskfile}</pre>
 		</>
 	);
-}
+};
 
 export default GeneratedTaskfile;

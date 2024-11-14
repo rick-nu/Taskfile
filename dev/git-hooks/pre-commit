@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Make the shell script user-interactive
+exec < /dev/tty
+
+# Run pre-commit action from the Taskfile
+./Taskfile pre-commit

@@ -1,76 +1,61 @@
-import {GeneratorSettings} from "@/components/Generator";
-import buildHeaderFunction from "./buildHeader";
+import { GeneratorSettings } from '@/components/Generator';
+import buildHeaderFunction from './buildHeader';
+import { renderUtilities } from './helpers';
+import loadTemplate from '@/helpers/loadTemplate';
+import taskfileBase from './taskfile-base.sh';
+import customSection from './custom-section.sh';
+import renderAddons from './addons';
+import renderFragment from '@/helpers/renderFragment';
 
-export const taskfile = (settings: GeneratorSettings): string => `#!/bin/bash
-# =========================================================
-# Taskfile gives you a set of quick tasks for your project
-# More info: https://github.com/Enrise/Taskfile
-# =========================================================
+export type TaskfileAddons = {
+	initCheckCommands: string[];
+	preInitCommands: string[];
+	postInitCommands: string[];
+	projectFunctions: string[];
+	startCommands: string[];
+	updateCommands: string[];
+	customSections: string[];
+	utilityFunctions: string[];
+	globals: string[];
+};
 
-${buildHeaderFunction(settings.project || 'Taskfile', settings.font)}
+export const taskfile = (settings: GeneratorSettings): string => {
+	const addons: TaskfileAddons = {
+		initCheckCommands: [],
+		preInitCommands: [],
+		postInitCommands: [],
+		projectFunctions: [],
+		startCommands: [],
+		updateCommands: [],
+		customSections: [],
+		utilityFunctions: [],
+		globals: [],
+	};
 
-# =========================================================
-## Project
-# =========================================================
+	renderAddons(settings, addons);
 
-function task:init { ## Initialise the project for local development
-	project:update
-	task:help
-}
-
-function task:start { ## Start the project in development mode
-	title "Run development application"
-	# TODO: run
-}
-
-function task:update { ## Update all dependencies and files
-	project:update
-}
-
-function project:update {
-	title "Run project updates"
-	# TODO: install updates
-}
-
-# =========================================================
-## Taskfile
-# =========================================================
-
-set -eo pipefail
-
-BLUE=$(printf '\\033[36m')
-YELLOW=$(printf '\\033[33m')
-RED=$(printf '\\033[31m')
-GREEN=$(printf '\\033[32m')
-RESET=$(printf '\\033[0m')
-
-function title {
-	echo -e "\\n\${BLUE}=>\${RESET} $1\\n"
-}
-
-function task:help { ## Show all available tasks
-	title "Available tasks"
-	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\\{ )?[#][#][ ]?/ \\
-		{printf "\\033[33m%-34s\\033[0m %s\\n", $1, $2}' $0 |\\
-		sed -E "s/[#]{2,}[ ]*/\${RESET}/g" |\\
-		sed -E "s/function task:*/  /g"
-	echo -e "\\n\${BLUE}Usage:\${RESET} $0 \${YELLOW}<task>\${RESET} <args>"
-}
-
-function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
-	title "Creating task shorthand"
-	if [ -f /usr/local/bin/task ]
-	then
-		echo "/usr/local/bin/task already exists."
-	else
-		echo -e "You are about to create /usr/local/bin/task that requires root permission..."
-		sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
-		sudo chmod +x /usr/local/bin/task
-	fi
-	echo -e "\${BLUE}You can now use:\${RESET} task \${YELLOW}<task>\${RESET} <args>"
-}
-
-# Execute tasks
-banner
-if [[ "$(declare -fF task:\${@-help})" ]]; then task:\${@-help}; else task:help; exit 1; fi
-`;
+	return loadTemplate(taskfileBase, {
+		header: buildHeaderFunction(settings.project || 'Taskfile', settings.font),
+		initCheckCommands: renderFragment(
+			addons.initCheckCommands,
+			`# Add checks to see if the project is ready for initialisation`,
+			true
+		),
+		preInitCommands: renderFragment(addons.preInitCommands, `# Add project preparation commands here`, true),
+		postInitCommands: renderFragment(addons.postInitCommands, `# Finalize setting up the project`, true),
+		startCommands: renderFragment(
+			addons.startCommands,
+			'title "Run development application"\n\t# TODO: Add start commands',
+			true
+		),
+		updateCommands: renderFragment(
+			addons.updateCommands,
+			'title "Run project updates"\n\t# TODO: Add project update commands here',
+			true
+		),
+		projectFunctions: renderFragment(addons.projectFunctions, '# Add more project specific functions here'),
+		customSections: renderFragment(addons.customSections, loadTemplate(customSection)),
+		utilitySection: renderUtilities(addons.utilityFunctions),
+		globals: renderFragment(addons.globals, `# Define global variables here`),
+	});
+};
