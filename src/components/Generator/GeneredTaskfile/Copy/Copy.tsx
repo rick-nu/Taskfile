@@ -20,7 +20,7 @@ const CopyToClipboard = ({ onCopy }: CopyProps): ReactElement => {
 
 	return (
 		<button type="button" className={`${styles.button} ${isCopied && styles.copied}`} onClick={onClick}>
-			{isCopied ? 'copied!' : 'copy'}
+			{isCopied ? 'Copied!' : 'Copy'}
 		</button>
 	);
 };
