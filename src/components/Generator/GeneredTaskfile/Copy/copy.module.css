@@ -13,8 +13,8 @@
 	font-size: 1rem;
 	font-weight: 700;
 	transition:
-		color 500ms,
-		border 500ms;
+		color 300ms ease-in-out,
+		border 300ms ease-in-out;
 }
 
 .button:hover {

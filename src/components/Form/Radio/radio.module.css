@@ -9,8 +9,15 @@
 	flex-direction: column;
 }
 
+.title {
+	font-weight: 600;
+	display: inline-block;
+	margin-bottom: 0.4rem;
+}
+
 .option {
-	font-size: 1.1rem;
+	font-size: 1rem;
+	user-select: none;
 }
 
 .option input {
@@ -23,11 +30,11 @@
 .option span {
 	position: relative;
 	display: block;
-	padding: 0.3rem 0.5rem 0.3rem 2rem;
+	padding: 0.5rem 1rem 0.5rem 2rem;
 	background-color: #f0f0f0;
-	border-radius: 0.2rem;
+	border-radius: 0.4rem;
 	cursor: pointer;
-	transition: background-color 500ms;
+	transition: background-color 300ms ease-in-out;
 }
 
 .option span:hover {
@@ -46,19 +53,30 @@
 	border-radius: 50%;
 }
 
+.option span::after {
+	content: '';
+	width: 0.75rem;
+	height: 0.75rem;
+	position: absolute;
+	top: 50%;
+	left: 0.6rem;
+	transform: translateY(-50%) scale(0.5);
+	border-radius: 50%;
+	transition:
+		background-color 150ms ease-in-out,
+		transform 150ms ease-in-out;
+}
+
 .option input:focus + span,
 .option input:active + span {
 	outline: 0.2rem solid #a1e1aa;
 }
 
+.option input:checked + span {
+	background: #a1e1aa76;
+}
+
 .option input:checked + span::after {
-	content: '';
 	background-color: #2ac93f;
-	width: 0.8rem;
-	height: 0.8rem;
-	position: absolute;
-	top: 50%;
-	left: 0.6rem;
-	transform: translateY(-50%);
-	border-radius: 50%;
+	transform: translateY(-50%) scale(1);
 }

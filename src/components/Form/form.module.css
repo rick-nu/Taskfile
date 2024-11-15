@@ -8,6 +8,12 @@
 	display: block;
 }
 
+.title {
+	font-weight: 600;
+	display: inline-block;
+	margin-bottom: 0.4rem;
+}
+
 .input {
 	display: block;
 	position: relative;
@@ -16,7 +22,7 @@
 	border-radius: 0.2rem;
 	border: 0;
 	width: 100%;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-family: var(--font-text), sans-serif;
 }
 
@@ -27,5 +33,7 @@
 
 .error {
 	display: block;
-	color: #d00000;
+	font-size: 1rem;
+	color: #b43232;
+	margin-top: 0.4rem;
 }

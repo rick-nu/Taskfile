@@ -11,18 +11,18 @@ type Props = {
 	options?: RegisterOptions;
 };
 
-const RadioInput = ({ name, children, options }: Props): ReactElement => {
+const CheckboxInput = ({ name, children, options }: Props): ReactElement => {
 	const { register } = useFormContext();
 
 	return (
 		<>
 			<label className={styles.checkbox}>
 				<input {...register(name, options)} name={name} type="checkbox" />
-				<span>{children}</span>
+				<span className={styles.label}>{children}</span>
 			</label>
 			<FormError name={name} />
 		</>
 	);
 };
 
-export default RadioInput;
+export default CheckboxInput;
