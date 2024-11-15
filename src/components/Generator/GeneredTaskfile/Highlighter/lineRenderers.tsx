@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { LineRenderer, RendererType } from './types';
-import { styles } from './styles';
+
+import styles from './highlighter.module.css';
 
 export const lineRenderers: LineRenderer[] = [
 	{
@@ -15,10 +16,10 @@ export const lineRenderers: LineRenderer[] = [
 		render: (line, i) => {
 			const [, name, rest] = line.match(/^function\s+([a-zA-Z_:]+)(.*)/) || [];
 			return (
-				<div key={i} style={styles.line}>
-					<span style={styles.colors.purple}>function </span>
-					<span style={styles.colors.yellow}>{name}</span>
-					<span style={styles.colors.white}>{rest}</span>
+				<div key={i} className={styles.line}>
+					<span className={styles['text-purple']}>function </span>
+					<span className={styles['text-yellow']}>{name}</span>
+					<span className={styles['text-white']}>{rest}</span>
 				</div>
 			);
 		},
@@ -27,7 +28,7 @@ export const lineRenderers: LineRenderer[] = [
 		type: RendererType.Comments,
 		test: (line) => line.trim().startsWith('#'),
 		render: (line, i) => (
-			<div key={i} style={styles.colors.gray}>
+			<div key={i} className={styles['text-gray']}>
 				{line}
 			</div>
 		),
@@ -38,10 +39,10 @@ export const lineRenderers: LineRenderer[] = [
 		render: (line, i) => {
 			const [varName, ...rest] = line.split('=');
 			return (
-				<div key={i} style={styles.line}>
-					<span style={styles.colors.blue}>{varName}</span>
-					<span style={styles.colors.white}>=</span>
-					<span style={styles.colors.lightYellow}>{rest.join('=')}</span>
+				<div key={i} className={styles.line}>
+					<span className={styles['text-blue']}>{varName}</span>
+					<span className={styles['text-white']}>=</span>
+					<span className={styles['text-yellow-light']}>{rest.join('=')}</span>
 				</div>
 			);
 		},
@@ -50,7 +51,7 @@ export const lineRenderers: LineRenderer[] = [
 		type: RendererType.Conditionals,
 		test: (line) => /^\s*if\s+|^\s*then\s+|^\s*else\s+|^\s*fi\s*/.test(line),
 		render: (line, i) => (
-			<div key={i} style={styles.colors.pink}>
+			<div key={i} className={styles['text-pink']}>
 				{line}
 			</div>
 		),
@@ -61,10 +62,10 @@ export const lineRenderers: LineRenderer[] = [
 		render: (line, i) => {
 			const parts = line.split('echo');
 			return (
-				<div key={i} style={styles.line}>
-					<span style={styles.colors.white}>{parts[0]}</span>
-					<span style={styles.colors.lightBlue}>echo</span>
-					<span style={styles.colors.lightYellow}>{parts[1]}</span>
+				<div key={i} className={styles.line}>
+					<span className={styles['text-white']}>{parts[0]}</span>
+					<span className={styles['text-blue-light']}>echo</span>
+					<span className={styles['text-yellow-light']}>{parts[1]}</span>
 				</div>
 			);
 		},

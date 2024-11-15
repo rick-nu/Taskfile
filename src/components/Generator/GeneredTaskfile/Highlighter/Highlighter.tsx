@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 
-import { styles } from './styles';
+import styles from './highlighter.module.css';
+
 import { lineRenderers } from './lineRenderers';
 
 export const highlighter = (code: string): ReactElement[] => {
@@ -15,7 +16,7 @@ export const highlighter = (code: string): ReactElement[] => {
 		}
 
 		return (
-			<div key={index} style={styles.colors.white}>
+			<div key={index} className={styles['text-white']}>
 				{line}
 			</div>
 		);

@@ -1,0 +1,35 @@
+.line {
+	display: flex;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.text-gray {
+	color: #888589;
+}
+
+.text-yellow {
+	color: #fde047;
+}
+
+.text-yellow-light {
+	color: #fef08a;
+}
+
+.text-pink {
+	color: #ec4899;
+}
+
+.text-purple {
+	color: #a855f7;
+}
+
+.text-blue {
+	color: #60a5fa;
+}
+
+.text-blue-light {
+	color: #93c5fd;
+}
