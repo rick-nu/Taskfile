@@ -35,7 +35,8 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 					<span className={styles['text-gray']}>function</span>
 					<span className={styles['text-white']}> task:</span>
 					<span className={styles['text-yellow']}>{name}</span>
-					<span className={styles['text-gray']}>{' { ##'}</span>
+					<span className={styles['text-gray']}>{' {'}</span>
+					<span className={styles['text-green']}>{' ##'}</span>
 					<span className={styles['text-white']}>{rest}</span>
 				</div>
 			);
@@ -77,9 +78,9 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 			const [varName, ...rest] = line.split('=');
 			return (
 				<div key={i} className={styles.line}>
-					<span className={styles['text-purple']}>{varName}</span>
-					<span className={styles['text-white']}>=</span>
-					<span className={styles['text-yellow-light']}>{rest.join('=')}</span>
+					<span className={styles['text-blue']}>{varName}</span>
+					<span className={styles['text-gray']}>=</span>
+					<span className={styles['text-white']}>{rest.join('=')}</span>
 				</div>
 			);
 		},
