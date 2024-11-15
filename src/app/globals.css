@@ -19,6 +19,7 @@ body {
 pre {
 	tab-size: 4;
 	font-family: var(--font-code), monospace;
+	font-size: 0.94rem;
 }
 
 a {
