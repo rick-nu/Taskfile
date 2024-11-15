@@ -9,7 +9,7 @@ export const highlighter = (code: string): ReactElement[] => {
 	const lines = normalizedCode.split('\n').slice(0, -1);
 
 	return lines.map((line, index) => {
-		const renderer = lineRenderers.find((r) => r.test(line));
+		const renderer = Object.values(lineRenderers).find((r) => r.test(line));
 
 		if (renderer) {
 			return renderer.render(line, index);
