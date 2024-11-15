@@ -103,7 +103,7 @@ function task:pre-commit { ## Clean up code before committing
 	task:prettier
 	task:eslint
 	task:typescript
-	title "Comitting"
+	title "Committing"
 }
 
 # =========================================================

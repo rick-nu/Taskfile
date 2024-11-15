@@ -22,8 +22,8 @@ const RadioInput = ({ name, title, options, choices, flat = false }: Props): Rea
 	const { register } = useFormContext();
 
 	return (
-		<div className={styles.container}>
-			<span>{title}</span>
+		<div>
+			<span className={styles.title}>{title}</span>
 			<div className={`${styles.options} ${flat && styles.flat}`}>
 				{choices.map((radio) => (
 					<label key={radio.value}>

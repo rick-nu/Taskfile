@@ -2,19 +2,17 @@
 	position: sticky;
 	top: 0;
 	float: right;
-	background-color: #202020;
-	color: #505050;
-	border: 0.2rem solid #505050;
-	padding: 0.5rem 0;
+	background-color: #10001fc2;
+	color: rgb(255 255 255 / 0.5);
+	border: 0.1rem solid rgb(255 255 255 / 0.5);
+	padding: 1rem;
 	border-radius: 0.2rem;
 	cursor: pointer;
-	width: 5rem;
-	height: 5rem;
+	width: 5.5rem;
 	font-size: 1rem;
-	font-weight: 700;
 	transition:
-		color 500ms,
-		border 500ms;
+		color 300ms ease-in-out,
+		border 300ms ease-in-out;
 }
 
 .button:hover {
@@ -22,7 +20,8 @@
 	border-color: #fff;
 }
 
-.copied {
-	color: #2ac93f !important;
-	border-color: #2ac93f !important;
+.button.copied,
+.button:hover.copied {
+	color: #2ac93f;
+	border-color: #2ac93f;
 }

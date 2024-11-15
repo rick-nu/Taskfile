@@ -1,6 +1,6 @@
 .checkbox {
 	position: relative;
-	font-size: 1.1rem;
+	font-size: 1rem;
 }
 
 .checkbox input {
@@ -13,11 +13,11 @@
 .checkbox span {
 	position: relative;
 	display: block;
-	padding: 0.3rem 0.5rem 0.3rem 2rem;
+	padding: 0.5rem 0.5rem 0.5rem 2rem;
 	background-color: #f0f0f0;
-	border-radius: 0.1rem;
+	border-radius: 0.4rem;
 	cursor: pointer;
-	transition: background-color 500ms;
+	transition: background-color 300ms ease-in-out;
 }
 
 .checkbox span:hover {
@@ -27,14 +27,28 @@
 .checkbox span::before {
 	content: '';
 	background-color: #fff;
-	width: 20px;
-	height: 20px;
+	width: 18px;
+	height: 18px;
 	position: absolute;
 	top: 50%;
-	left: 5px;
+	left: 0.4rem;
 	transform: translateY(-50%);
+	border-radius: 0.2rem;
+	transition: background-color 300ms ease-in-out;
+}
+
+.checkbox span::after {
+	content: '';
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	top: 50%;
+	left: 9px;
+	transform: translateY(-50%) scale(0.5);
 	border-radius: 0.1rem;
-	transition: background-color 250ms;
+	transition:
+		background-color 150ms ease-in-out,
+		transform 150ms ease-in-out;
 }
 
 .checkbox input:focus + span,
@@ -43,13 +57,10 @@
 }
 
 .checkbox input:checked + span::after {
-	content: '';
 	background-color: #2ac93f;
-	width: 14px;
-	height: 14px;
-	position: absolute;
-	top: 50%;
-	left: 8px;
-	transform: translateY(-50%);
-	border-radius: 0.1rem;
+	transform: translateY(-50%) scale(1);
+}
+
+.label {
+	user-select: none;
 }

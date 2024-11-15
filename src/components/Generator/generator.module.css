@@ -9,6 +9,7 @@
 }
 
 .settingsWindow {
+	background-color: #fff;
 	width: 25rem;
 	flex-shrink: 0;
 	max-width: 100%;
@@ -16,4 +17,6 @@
 
 .outputWindow {
 	flex-grow: 1;
+	background-color: #10001fc2;
+	color: #fff;
 }

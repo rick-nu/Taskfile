@@ -1,40 +1,29 @@
 .window {
-	background: #fff;
-	border-radius: 0.2rem;
-	box-shadow: 0 0 3rem #0005;
+	border-radius: 0.4rem;
+	box-shadow:
+		0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	outline: 1px solid rgb(255 255 255 / 0.2);
 	overflow: hidden;
 }
 
 .topBar {
 	display: flex;
 	flex-direction: row;
-	gap: 0.8rem;
+	gap: 0.6rem;
 	padding: 0.8rem;
 }
 
 .topBar > div {
-	width: 1.6rem;
-	height: 1.6rem;
-	background-color: #fbbf2b;
+	width: 0.75rem;
+	height: 0.75rem;
+	background-color: #a0a0b6;
 	border-radius: 50%;
-
-	&:first-child {
-		background-color: #ff5e56;
-	}
-
-	&:last-child {
-		background-color: #2ac93f;
-	}
 }
 
 .content {
 	position: relative;
-	padding: 0.8rem;
+	padding: 1rem;
 	overflow: scroll;
 	max-height: calc(100dvh - 11.2rem);
-}
-
-.dark {
-	background-color: #202020;
-	color: #fff;
 }
