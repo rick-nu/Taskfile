@@ -4,11 +4,16 @@ import styles from './highlighter.module.css';
 
 enum RendererType {
 	EmptyLines,
+	TaskDefinitions,
 	FunctionDefinitions,
+	Sections,
 	Comments,
 	Variables,
+	TaskCalls,
 	Conditionals,
 	EchoStatements,
+	Titles,
+	FunctionEnds,
 }
 
 type LineRenderer = {
@@ -21,23 +26,48 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 		test: (line) => line.trim() === '',
 		render: (_, i) => <div key={i}>&nbsp;</div>,
 	},
-	[RendererType.FunctionDefinitions]: {
-		test: (line) => /^function\s+[a-zA-Z_:]+/.test(line),
+	[RendererType.TaskDefinitions]: {
+		test: (line) => /^function\stask:+[a-zA-Z-_:]+/.test(line),
 		render: (line, i) => {
-			const [, name, rest] = line.match(/^function\s+([a-zA-Z_:]+)(.*)/) || [];
+			const [, name, rest] = line.match(/^function\stask:+([a-zA-Z-_:]+)\s{\s##(.*)/) || [];
 			return (
 				<div key={i} className={styles.line}>
-					<span className={styles['text-purple']}>function </span>
+					<span className={styles['text-gray']}>function</span>
+					<span className={styles['text-white']}> task:</span>
 					<span className={styles['text-yellow']}>{name}</span>
+					<span className={styles['text-gray']}>{' {'}</span>
+					<span className={styles['text-green']}>{' ##'}</span>
 					<span className={styles['text-white']}>{rest}</span>
 				</div>
 			);
 		},
 	},
+	[RendererType.FunctionDefinitions]: {
+		test: (line) => /^function\s+[a-zA-Z-_:]+/.test(line),
+		render: (line, i) => {
+			const [, name, rest] = line.match(/^function\s+([a-zA-Z-_:]+)(.*)/) || [];
+			return (
+				<div key={i} className={styles.line}>
+					<span className={styles['text-gray']}>function </span>
+					<span className={styles['text-white']}>{name}</span>
+					<span className={styles['text-gray']}>{rest}</span>
+				</div>
+			);
+		},
+	},
+	[RendererType.Sections]: {
+		test: (line) => line.startsWith('## '),
+		render: (line, i) => (
+			<div key={i} className={styles.line}>
+				<span className={styles['text-green']}>## </span>
+				<span className={styles['text-white']}>{line.substring(3)}</span>
+			</div>
+		),
+	},
 	[RendererType.Comments]: {
 		test: (line) => line.trim().startsWith('#'),
 		render: (line, i) => (
-			<div key={i} className={styles['text-gray']}>
+			<div key={i} className={styles['text-green']}>
 				{line}
 			</div>
 		),
@@ -49,14 +79,14 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 			return (
 				<div key={i} className={styles.line}>
 					<span className={styles['text-blue']}>{varName}</span>
-					<span className={styles['text-white']}>=</span>
-					<span className={styles['text-yellow-light']}>{rest.join('=')}</span>
+					<span className={styles['text-gray']}>=</span>
+					<span className={styles['text-white']}>{rest.join('=')}</span>
 				</div>
 			);
 		},
 	},
 	[RendererType.Conditionals]: {
-		test: (line) => /^\s*if\s+|^\s*then\s+|^\s*else\s+|^\s*fi\s*/.test(line),
+		test: (line) => /^if+|^then+|^else+|^fi/.test(line.trim()),
 		render: (line, i) => (
 			<div key={i} className={styles['text-pink']}>
 				{line}
@@ -69,11 +99,43 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 			const parts = line.split('echo');
 			return (
 				<div key={i} className={styles.line}>
-					<span className={styles['text-white']}>{parts[0]}</span>
-					<span className={styles['text-blue-light']}>echo</span>
+					<span className={styles['text-white']}>{parts[0]}echo</span>
 					<span className={styles['text-yellow-light']}>{parts[1]}</span>
 				</div>
 			);
 		},
+	},
+	[RendererType.Titles]: {
+		test: (line) => line.trim().startsWith('title'),
+		render: (line, i) => {
+			const parts = line.split('title');
+			return (
+				<div key={i} className={styles.line}>
+					<span className={styles['text-white']}>{parts[0]}title</span>
+					<span className={styles['text-yellow-light']}>{parts[1]}</span>
+				</div>
+			);
+		},
+	},
+	[RendererType.TaskCalls]: {
+		test: (line) => /^\stask:+[a-zA-Z-_:]+/.test(line),
+		render: (line, i) => {
+			const [, space, task] = line.match(/(\s)task:+([a-zA-Z-_:]+)/) || [];
+
+			return (
+				<div key={i} className={styles.line}>
+					<span className={styles['text-white']}>{space}task:</span>
+					<span className={styles['text-yellow']}>{task}</span>
+				</div>
+			);
+		},
+	},
+	[RendererType.FunctionEnds]: {
+		test: (line) => line.trim().startsWith('}'),
+		render: (line, i) => (
+			<div key={i} className={styles['text-gray']}>
+				{line}
+			</div>
+		),
 	},
 };
