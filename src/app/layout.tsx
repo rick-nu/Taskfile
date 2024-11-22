@@ -1,7 +1,8 @@
-import type { Metadata } from 'next';
+import type {Metadata} from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
-import { ReactNode } from 'react';
+import './globals.scss';
+import {ReactNode} from 'react';
+import Desktop from '@/components/Desktop';
 
 const jetbrainsMono = localFont({
 	src: './fonts/JetBrainsMono.ttf',
@@ -28,7 +29,9 @@ type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
 	return (
 		<html lang="en">
-			<body className={`${jetbrainsMono.variable} ${manrope.variable}`}>{children}</body>
+			<body className={`${jetbrainsMono.variable} ${manrope.variable}`}>
+				<Desktop>{children}</Desktop>
+			</body>
 		</html>
 	);
 }

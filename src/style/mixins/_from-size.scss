@@ -1,0 +1,24 @@
+@use 'variables/breakpoints' as *;
+
+@mixin from($size) {
+	@if $size == small {
+		@media (min-width: $breakpoint-small) {
+			@content;
+		}
+	}
+	@if $size == medium {
+		@media (min-width: $breakpoint-medium) {
+			@content;
+		}
+	}
+	@if $size == large {
+		@media (min-width: $breakpoint-large) {
+			@content;
+		}
+	}
+	@if $size == huge {
+		@media (min-width: $breakpoint-huge) {
+			@content;
+		}
+	}
+}

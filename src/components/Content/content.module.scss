@@ -1,0 +1,16 @@
+@use 'mixins/from-size' as *;
+
+.content {
+	padding: 1rem;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 80rem;
+
+	@include from(small) {
+		padding: 2rem;
+	}
+
+	@include from(medium) {
+		padding: 4rem;
+	}
+}

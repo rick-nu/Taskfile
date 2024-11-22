@@ -1,14 +1,18 @@
-import type { NextConfig } from 'next';
+import type {NextConfig} from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
-	output: 'export',
+	output: "export",
 	webpack: (config) => {
 		config.module.rules.push({
 			test: /\.(txt|sh)$/i,
-			use: 'raw-loader',
+			use: "raw-loader",
 		});
 
 		return config;
+	},
+	sassOptions: {
+		includePaths: [path.join(__dirname, "src/style")],
 	},
 };
 

@@ -1,14 +1,14 @@
 'use client';
 
-import { ReactElement } from 'react';
+import {ReactElement} from 'react';
 import Window from '@/components/Window';
 
-import styles from './generator.module.css';
-import { useForm } from 'react-hook-form';
+import styles from './generator.module.scss';
+import {useForm} from 'react-hook-form';
 import Settings from './Settings';
 import GeneratedTaskfile from './GeneredTaskfile';
 import Form from '@/components/Form';
-import { Font } from './GeneredTaskfile/buildHeader';
+import {Font} from './GeneredTaskfile/buildHeader';
 
 export type GeneratorSettings = {
 	project: string;
@@ -31,15 +31,13 @@ const Generator = (): ReactElement => {
 	});
 
 	return (
-		<Form form={form} onSubmit={form.handleSubmit(() => {})}>
-			<div className={styles.container}>
-				<Window className={styles.settingsWindow}>
-					<Settings />
-				</Window>
-				<Window className={styles.outputWindow} dark>
-					<GeneratedTaskfile />
-				</Window>
-			</div>
+		<Form className={styles.container} form={form} onSubmit={form.handleSubmit(() => {})}>
+			<Window className={styles.settingsWindow}>
+				<Settings />
+			</Window>
+			<Window className={styles.outputWindow} dark>
+				<GeneratedTaskfile />
+			</Window>
 		</Form>
 	);
 };

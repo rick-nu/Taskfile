@@ -1,6 +1,6 @@
-import { ReactElement, ReactNode } from 'react';
+import {ReactElement, ReactNode} from "react";
 
-import styles from './window.module.css';
+import styles from "./window.module.scss";
 
 type WindowProps = {
 	children: ReactNode;
@@ -8,14 +8,18 @@ type WindowProps = {
 	dark?: boolean;
 };
 
-const Window = ({ children, className = '', dark = false }: WindowProps): ReactElement => (
-	<div className={`${styles.window} ${className}`}>
+const Window = ({
+	children,
+	className = "",
+	dark = false,
+}: WindowProps): ReactElement => (
+	<div className={`${styles.window} ${className} ${dark && styles.dark}`}>
 		<div className={styles.topBar}>
 			<div />
 			<div />
 			<div />
 		</div>
-		<div className={`${styles.content} ${dark && styles.dark}`}>{children}</div>
+		<div className={`${styles.content}`}>{children}</div>
 	</div>
 );
 

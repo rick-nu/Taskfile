@@ -1,3 +1,5 @@
+@use 'variables/color' as *;
+
 * {
 	padding: 0;
 	margin: 0;
@@ -23,7 +25,7 @@ pre {
 }
 
 a {
-	color: #0068bc;
+	color: $color-blue-50;
 	text-decoration: none;
 }
 

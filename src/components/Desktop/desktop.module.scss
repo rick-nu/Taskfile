@@ -1,0 +1,25 @@
+@use 'mixins/from-size' as *;
+
+.screen {
+	display: flex;
+	flex-direction: column;
+	min-height: 100dvh;
+}
+
+.start {
+	height: 3.4rem;
+	background-color: #0005;
+	width: 100%;
+	flex-grow: 0;
+	flex-shrink: 0;
+
+	@include from(large) {
+		order: 2;
+	}
+}
+
+.desktop {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
