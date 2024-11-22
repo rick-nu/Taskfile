@@ -1,7 +1,7 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.scss';
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 import Desktop from '@/components/Desktop';
 
 const jetbrainsMono = localFont({

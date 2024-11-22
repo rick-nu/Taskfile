@@ -1,6 +1,6 @@
-import {ReactElement, ReactNode} from "react";
+import { ReactElement, ReactNode } from 'react';
 
-import styles from "./desktop.module.scss";
+import styles from './desktop.module.scss';
 
 type WindowProps = {
 	children: ReactNode;
