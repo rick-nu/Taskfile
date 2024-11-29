@@ -1,4 +1,4 @@
-import React, {ReactElement} from 'react';
+import React, { ReactElement } from 'react';
 
 import styles from './highlighter.module.css';
 
@@ -49,9 +49,9 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 			return (
 				<div key={i} className={styles.line}>
 					<span className={styles['text-gray']}>function </span>
-					<span className={styles['text-white']}>{name}</span><span
-					className={styles['text-gray']}>{' {'}</span>
-					{!!comment && (<span className={styles['text-green']}> #{comment}</span>)}
+					<span className={styles['text-white']}>{name}</span>
+					<span className={styles['text-gray']}>{' {'}</span>
+					{!!comment && <span className={styles['text-green']}> #{comment}</span>}
 				</div>
 			);
 		},

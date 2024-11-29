@@ -1,12 +1,12 @@
 'use client';
 
-import {ReactElement} from 'react';
+import { ReactElement } from 'react';
 
 import styles from './settings.module.css';
 import TextInput from '@/components/Form/Text';
 import RadioInput from '@/components/Form/Radio';
-import {useFormContext} from 'react-hook-form';
-import {GeneratorSettings} from '@/components/Generator';
+import { useFormContext } from 'react-hook-form';
+import { GeneratorSettings } from '@/components/Generator';
 import Checkbox from '@/components/Form/Checkbox';
 
 const Settings = (): ReactElement => {

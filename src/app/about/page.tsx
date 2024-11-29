@@ -1,7 +1,7 @@
-import {Metadata} from 'next';
+import { Metadata } from 'next';
 import Content from '@/components/Content';
 
-import readme from '@/../README.md'
+import readme from '@/../README.md';
 
 export const generateMetadata = (): Metadata => ({
 	title: 'Information • taskfile.sh',
@@ -10,7 +10,5 @@ export const generateMetadata = (): Metadata => ({
 });
 
 export default function Page() {
-	return (
-		<Content content={readme} />
-	);
+	return <Content content={readme} />;
 }

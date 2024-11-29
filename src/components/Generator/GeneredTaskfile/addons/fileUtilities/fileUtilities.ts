@@ -1,5 +1,5 @@
-import {GeneratorSettings} from '@/components/Generator';
-import {TaskfileAddons} from '@/components/Generator/GeneredTaskfile/taskfile';
+import { GeneratorSettings } from '@/components/Generator';
+import { TaskfileAddons } from '@/components/Generator/GeneredTaskfile/taskfile';
 import loadTemplate from '@/helpers/loadTemplate';
 import fileUtilitiesSh from './file-utilities.sh';
 
