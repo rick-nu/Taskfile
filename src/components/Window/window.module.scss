@@ -1,10 +1,19 @@
+@use 'mixins/from-size' as *;
+
 .window {
+	display: flex;
+	flex-direction: column;
 	border-radius: 0.4rem;
 	box-shadow:
 		0 10px 15px -3px rgb(0 0 0 / 0.1),
 		0 4px 6px -4px rgb(0 0 0 / 0.1);
 	outline: 1px solid rgb(255 255 255 / 0.2);
 	overflow: hidden;
+	background-color: #fff;
+
+	@include from(large) {
+		max-height: calc(100dvh - 11.5rem);
+	}
 }
 
 .topBar {
@@ -24,6 +33,12 @@
 .content {
 	position: relative;
 	padding: 1rem;
-	overflow: scroll;
-	max-height: calc(100dvh - 11.2rem);
+	overflow-x: hidden;
+	overflow-y: auto;
+	flex-grow: 1;
+}
+
+.dark {
+	background-color: #10001fc2;
+	color: #fff;
 }

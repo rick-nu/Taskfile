@@ -45,12 +45,13 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 	[RendererType.FunctionDefinitions]: {
 		test: (line) => /^function\s+[a-zA-Z-_:]+/.test(line),
 		render: (line, i) => {
-			const [, name, rest] = line.match(/^function\s+([a-zA-Z-_:]+)(.*)/) || [];
+			const [, name, _filler, comment] = line.match(/^function\s+([a-zA-Z-_:]+)(\s{\s#(.*))?/) || [];
 			return (
 				<div key={i} className={styles.line}>
 					<span className={styles['text-gray']}>function </span>
 					<span className={styles['text-white']}>{name}</span>
-					<span className={styles['text-gray']}>{rest}</span>
+					<span className={styles['text-gray']}>{' {'}</span>
+					{!!comment && <span className={styles['text-green']}> #{comment}</span>}
 				</div>
 			);
 		},

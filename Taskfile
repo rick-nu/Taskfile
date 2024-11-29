@@ -39,7 +39,7 @@ function project:checkout-pr {
 	then
 		echo "You need to provide a pull request number to check out."
 		echo -e "${BLUE}Usage:${RESET} $0 pr ${YELLOW}<number>${RESET}"
-		exit 422
+		exit 1
 	fi
 	echo "Checking out pull request $1..."
 	git fetch origin refs/pull/$1/head:refs/remotes/origin/pr/$1
@@ -100,8 +100,8 @@ function task:typescript { ## Check typescript types
 # =========================================================
 
 function task:pre-commit { ## Clean up code before committing
-	task:prettier
 	task:eslint
+	task:prettier
 	task:typescript
 	title "Committing"
 }
@@ -135,15 +135,10 @@ function task:help { ## Show all available tasks
 
 function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 	title "Creating task shorthand"
-	if [ -f /usr/local/bin/task ]
-	then
-		echo "/usr/local/bin/task already exists."
-	else
-		echo -e "You are about to create /usr/local/bin/task that requires root permission..."
-		sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
-		sudo chmod +x /usr/local/bin/task
-	fi
-	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
+	echo -e "You're about to create ${YELLOW}/usr/local/bin/task${RESET} that requires ${RED}root${RESET} permission..."
+	sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
+	sudo chmod +x /usr/local/bin/task
+	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <arguments>"
 }
 
 banner

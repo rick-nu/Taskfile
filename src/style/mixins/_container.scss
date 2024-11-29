@@ -1,0 +1,33 @@
+@use 'variables/breakpoints' as *;
+@use 'mixins/from-size' as *;
+
+@mixin container($size) {
+	width: 100%;
+	padding: 0 1rem;
+	margin: 0 auto;
+
+	@if $size == small or $size == medium or $size == large or $size == huge {
+		@include from(small) {
+			max-width: $breakpoint-small-max-width;
+		}
+	}
+
+	@if $size == medium or $size == large or $size == huge {
+		@include from(medium) {
+			padding: 0 2rem;
+			max-width: $breakpoint-medium-max-width;
+		}
+	}
+
+	@if $size == large or $size == huge {
+		@include from(large) {
+			max-width: $breakpoint-large-max-width;
+		}
+	}
+
+	@if $size == huge {
+		@include from(huge) {
+			max-width: $breakpoint-huge-max-width;
+		}
+	}
+}

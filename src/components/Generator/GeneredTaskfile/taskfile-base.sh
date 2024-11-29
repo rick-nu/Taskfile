@@ -63,13 +63,9 @@ function task:help { ## Show all available tasks
 
 function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 	title "Creating task shorthand"
-	if [ -f /usr/local/bin/task ]; then
-		echo "/usr/local/bin/task already exists."
-	else
-		echo -e "You are about to create /usr/local/bin/task that requires root permission..."
-		sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
-		sudo chmod +x /usr/local/bin/task
-	fi
+	echo -e "You're about to create ${YELLOW}/usr/local/bin/task${RESET} that requires ${RED}root${RESET} permission..."
+	sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
+	sudo chmod +x /usr/local/bin/task
 	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
 }
 

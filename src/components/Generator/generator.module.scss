@@ -1,0 +1,42 @@
+@use 'mixins/from-size' as *;
+
+.container {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 102rem;
+	max-width: 100%;
+	gap: 2rem;
+	padding: 2rem 1rem;
+	flex-grow: 1;
+
+	@include from(small) {
+		padding: 2rem;
+	}
+
+	@include from(medium) {
+		gap: 4rem;
+		padding: 4rem;
+	}
+
+	@include from(large) {
+		flex-direction: row;
+	}
+}
+
+.settingsWindow {
+	width: 100%;
+	flex-shrink: 0;
+
+	@include from(large) {
+		width: 25rem;
+		align-self: flex-start;
+		max-height: none;
+	}
+}
+
+.outputWindow {
+	flex-grow: 1;
+	flex-shrink: 1;
+	height: 100%;
+}

@@ -80,6 +80,7 @@ const Settings = (): ReactElement => {
 				]}
 			/>
 			<Checkbox name="configureGitHooks">Configure git hooks</Checkbox>
+			<Checkbox name="fileUtilities">File utilities</Checkbox>
 		</div>
 	);
 };
