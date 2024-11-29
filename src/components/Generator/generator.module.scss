@@ -6,12 +6,11 @@
 	margin: 0 auto;
 	width: 102rem;
 	max-width: 100%;
-	gap: 1rem;
-	padding: 1rem;
+	gap: 2rem;
+	padding: 2rem 1rem;
 	flex-grow: 1;
 
 	@include from(small) {
-		gap: 2rem;
 		padding: 2rem;
 	}
 

@@ -5,6 +5,7 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: 80rem;
+	line-height: 150%;
 
 	@include from(small) {
 		padding: 2rem;
