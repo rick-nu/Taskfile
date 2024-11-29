@@ -5,7 +5,7 @@ available tasks to your project.
 
 Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
 
-[![CLI Taskfile preview](./images/cli-preview.gif)](https://taskfile.sh)
+[![CLI Taskfile preview](public/cli-preview.gif)](https://taskfile.sh)
 
 ## Why
 
