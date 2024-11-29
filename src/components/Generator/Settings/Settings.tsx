@@ -79,7 +79,7 @@ const Settings = (): ReactElement => {
 					},
 				]}
 			/>
-			<Checkbox name="linkGitHooks">Create git hooks symlink</Checkbox>
+			<Checkbox name="configureGitHooks">Configure git hooks</Checkbox>
 		</div>
 	);
 };
