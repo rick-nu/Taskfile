@@ -8,10 +8,10 @@ const config = {
 	// Frontend specific
 	// ==============================
 	'*.{ts,tsx}': [
-		// tsc runs for all files instead of only the edited ones
-		() => 'tsc --noEmit --project . --pretty',
 		'eslint --config dev/linting/eslint.config.mjs',
 		prettier,
+		// tsc runs for all files instead of only the edited ones
+		() => 'tsc --noEmit --project . --pretty',
 	],
 
 	// ==============================

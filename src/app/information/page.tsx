@@ -1,4 +1,4 @@
-import {Metadata} from 'next';
+import { Metadata } from 'next';
 import Content from '@/components/Content';
 
 export const generateMetadata = (): Metadata => ({
