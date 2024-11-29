@@ -16,7 +16,7 @@ export type GeneratorSettings = {
 	runtime: 'local' | 'docker-compose';
 	developmentProxy: boolean;
 	checkoutGitRequest: 'none' | 'github' | 'gitlab';
-	linkGitHooks: boolean;
+	configureGitHooks: boolean;
 };
 
 const Generator = (): ReactElement => {
