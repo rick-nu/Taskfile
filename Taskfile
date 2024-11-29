@@ -100,8 +100,8 @@ function task:typescript { ## Check typescript types
 # =========================================================
 
 function task:pre-commit { ## Clean up code before committing
-	task:prettier
 	task:eslint
+	task:prettier
 	task:typescript
 	title "Committing"
 }
