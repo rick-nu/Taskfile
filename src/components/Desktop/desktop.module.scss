@@ -42,13 +42,16 @@ $bar-height: 3.4rem;
 }
 
 .container {
-	max-width: 72rem;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
 	gap: 0.5rem;
 	height: $bar-height;
 	align-items: center;
+
+	@include from(large) {
+		justify-content: center;
+	}
 }
 
 .enrise,
