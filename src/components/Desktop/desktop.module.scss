@@ -48,7 +48,10 @@ $bar-height: 3.4rem;
 	gap: 0.5rem;
 	height: $bar-height;
 	align-items: center;
-	justify-content: center;
+
+	@include from(large) {
+		justify-content: center;
+	}
 }
 
 .enrise,
