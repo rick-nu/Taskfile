@@ -22,8 +22,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	border-radius: 0.2rem;
-	transition:
-		background-color 200ms ease-in-out;
+	transition: background-color 200ms ease-in-out;
 }
 
 .download {
@@ -32,10 +31,11 @@
 
 .copy {
 	background-image: url('./clipboard.svg');
-	background-size: 1.0rem;
+	background-size: 1rem;
 }
 
-.copy:hover, .download:hover {
+.copy:hover,
+.download:hover {
 	color: #fff;
 	border-color: #fff;
 }

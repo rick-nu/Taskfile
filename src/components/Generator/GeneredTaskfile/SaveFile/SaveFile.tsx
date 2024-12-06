@@ -1,6 +1,6 @@
 'use client';
 
-import {ReactElement, useState} from 'react';
+import { ReactElement, useState } from 'react';
 
 import styles from './save-file.module.scss';
 
@@ -19,7 +19,7 @@ const CopyToClipboard = ({ content }: CopyProps): ReactElement => {
 	};
 
 	const download = (): void => {
-		const blob = new Blob([content], {type: 'text/x-shellscript'});
+		const blob = new Blob([content], { type: 'text/x-shellscript' });
 		const elem = window.document.createElement('a');
 		elem.href = window.URL.createObjectURL(blob);
 		elem.download = 'Taskfile';
@@ -31,7 +31,12 @@ const CopyToClipboard = ({ content }: CopyProps): ReactElement => {
 	return (
 		<div className={styles.container}>
 			<button type="button" className={`${styles.download}`} onClick={download} title="Download Taskfile" />
-			<button type="button" className={`${styles.copy} ${isCopied && styles.copied}`} onClick={onClick} title="Copy Taskfile content" />
+			<button
+				type="button"
+				className={`${styles.copy} ${isCopied && styles.copied}`}
+				onClick={onClick}
+				title="Copy Taskfile content"
+			/>
 		</div>
 	);
 };
