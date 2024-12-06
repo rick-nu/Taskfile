@@ -19,7 +19,6 @@ function banner {
 # =========================================================
 
 function task:init { ## Set up the project for local development
-	project:npm-config
 	project:git-config
 	task:update
 	task:help
@@ -50,12 +49,6 @@ function project:checkout-pr {
 function project:install-dependencies {
 	title "Installing dependencies"
 	npm install
-}
-
-function project:npm-config {
-	title "Configuring NPM"
-	npm config --location=project set legacy-peer-deps=true \
-		&& echo -e "All ${GREEN}good${RESET}."
 }
 
 function project:git-config {

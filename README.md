@@ -19,7 +19,9 @@ Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
 ## How does it work?
 
 Taskfiles are simple bash scripts, but an easy-to-read function format. There are some things that we need to explain
-for our Taskfile setup.
+for our Taskfile setup. It all starts with a `Taskfile`. Download your `Taskfile` from
+[taskfile.sh](https://taskfile.sh) and save it. Make sure the Taskfile is executable: `chmod +x ./Taskfile`. You can now
+run `./Taskfile` in your terminal.
 
 ### Tasks
 

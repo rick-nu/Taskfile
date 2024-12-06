@@ -10,21 +10,21 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"next": "^15",
+		"next": "^15.0.4",
 		"raw-loader": "^4.0.2",
-		"react": "19.0.0-rc.1",
-		"react-dom": "19.0.0-rc.1",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
 		"react-hook-form": "^7"
 	},
 	"devDependencies": {
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
+		"@types/node": "^22.10.1",
+		"@types/react": "^19.0.0",
+		"@types/react-dom": "^19.0.0",
 		"eslint": "^9",
-		"eslint-config-next": "^15",
-		"markdown-to-jsx": "^7.7.0",
-		"prettier": "^3.3.3",
-		"sass": "^1.81.0",
+		"eslint-config-next": "^15.0.4",
+		"markdown-to-jsx": "^7.7.1",
+		"prettier": "^3.4.2",
+		"sass": "^1.82.0",
 		"typescript": "^5"
 	},
 	"keywords": [
