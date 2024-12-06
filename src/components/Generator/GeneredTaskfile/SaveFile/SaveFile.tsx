@@ -4,11 +4,11 @@ import {ReactElement, useState} from 'react';
 
 import styles from './save-file.module.scss';
 
-type CopyProps = {
+type SaveFileProps = {
 	content: string;
 };
 
-const SaveFile = ({ content }: CopyProps): ReactElement => {
+const SaveFile = ({ content }: SaveFileProps): ReactElement => {
 	const [isCopied, setCopied] = useState(false);
 
 	const copyToClipboard = (): void => {

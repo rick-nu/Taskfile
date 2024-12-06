@@ -3,11 +3,11 @@ import { useFormContext } from 'react-hook-form';
 
 import styles from '../form.module.css';
 
-type TextInputProps = {
+type FormErrorProps = {
 	name: string;
 };
 
-const FormError = ({ name }: TextInputProps): ReactElement => {
+const FormError = ({ name }: FormErrorProps): ReactElement => {
 	const form = useFormContext();
 
 	const error = form.formState.errors[name];
