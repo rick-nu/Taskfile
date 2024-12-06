@@ -8,10 +8,10 @@ type CopyProps = {
 	content: string;
 };
 
-const CopyToClipboard = ({ content }: CopyProps): ReactElement => {
+const SaveFile = ({ content }: CopyProps): ReactElement => {
 	const [isCopied, setCopied] = useState(false);
 
-	const onClick = (): void => {
+	const copyToClipboard = (): void => {
 		setCopied(true);
 		navigator.clipboard.writeText(content);
 
@@ -34,11 +34,11 @@ const CopyToClipboard = ({ content }: CopyProps): ReactElement => {
 			<button
 				type="button"
 				className={`${styles.copy} ${isCopied && styles.copied}`}
-				onClick={onClick}
+				onClick={copyToClipboard}
 				title="Copy Taskfile content"
 			/>
 		</div>
 	);
 };
 
-export default CopyToClipboard;
+export default SaveFile;
