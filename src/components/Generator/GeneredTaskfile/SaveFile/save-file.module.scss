@@ -1,0 +1,46 @@
+.container {
+	position: sticky;
+	top: 0;
+	float: right;
+	transform: translateY(-1rem);
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+}
+
+.copy,
+.download {
+	background-color: #10001fc2;
+	color: rgb(255 255 255 / 0.5);
+	border: 0.1rem solid rgb(255 255 255 / 0.5);
+	border-radius: 0.2rem;
+	height: 2.6rem;
+	width: 2.6rem;
+	cursor: pointer;
+	font-size: 1rem;
+	background-size: 1.2rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 0.2rem;
+	transition:
+		background-color 200ms ease-in-out;
+}
+
+.download {
+	background-image: url('./download.svg');
+}
+
+.copy {
+	background-image: url('./clipboard.svg');
+	background-size: 1.0rem;
+}
+
+.copy:hover, .download:hover {
+	color: #fff;
+	border-color: #fff;
+}
+
+.copy.copied,
+.copy:hover.copied {
+	background-color: #2ac93faa;
+}

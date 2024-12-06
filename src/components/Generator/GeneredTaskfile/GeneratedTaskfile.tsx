@@ -1,11 +1,11 @@
 'use client';
 
-import { ReactElement } from 'react';
-import { taskfile } from '@/components/Generator/GeneredTaskfile/taskfile';
-import { useFormContext } from 'react-hook-form';
-import { GeneratorSettings } from '@/components/Generator/Generator';
-import CopyToClipboard from '@/components/Generator/GeneredTaskfile/Copy';
-import { highlighter } from './Highlighter';
+import {ReactElement} from 'react';
+import {taskfile} from '@/components/Generator/GeneredTaskfile/taskfile';
+import {useFormContext} from 'react-hook-form';
+import {GeneratorSettings} from '@/components/Generator/Generator';
+import SaveFile from './SaveFile';
+import {highlighter} from './Highlighter';
 
 const GeneratedTaskfile = (): ReactElement => {
 	const form = useFormContext<GeneratorSettings>();
@@ -16,7 +16,7 @@ const GeneratedTaskfile = (): ReactElement => {
 
 	return (
 		<>
-			<CopyToClipboard onCopy={() => navigator.clipboard.writeText(resultTaskfile)} />
+			<SaveFile content={resultTaskfile} />
 			<pre>{highlighter(resultTaskfile)}</pre>
 		</>
 	);
