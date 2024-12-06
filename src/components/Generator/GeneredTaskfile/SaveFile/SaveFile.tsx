@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, useState } from 'react';
+import {ReactElement, useState} from 'react';
 
 import styles from './save-file.module.scss';
 
@@ -30,7 +30,7 @@ const CopyToClipboard = ({ content }: CopyProps): ReactElement => {
 
 	return (
 		<div className={styles.container}>
-			<button type="button" className={`${styles.download}`} onClick={download} title="Download Taskfile" />
+			<button type="button" className={styles.download} onClick={download} title="Download Taskfile" />
 			<button
 				type="button"
 				className={`${styles.copy} ${isCopied && styles.copied}`}
