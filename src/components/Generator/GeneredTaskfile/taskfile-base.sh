@@ -40,11 +40,11 @@ function project:update {
 
 set -eo pipefail
 
-BLUE=$(printf '\\033[36m')
-YELLOW=$(printf '\\033[33m')
-RED=$(printf '\\033[31m')
-GREEN=$(printf '\\033[32m')
-RESET=$(printf '\\033[0m')
+BLUE=$(printf '\033[36m')
+YELLOW=$(printf '\033[33m')
+RED=$(printf '\033[31m')
+GREEN=$(printf '\033[32m')
+RESET=$(printf '\033[0m')
 
 [[globals]]
 
