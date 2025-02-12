@@ -1,14 +1,14 @@
 'use client';
 
-import {ReactElement} from 'react';
+import { ReactElement } from 'react';
 import Window from '@/components/Window';
 
 import styles from './generator.module.scss';
-import {useForm} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import Settings from './Settings';
 import GeneratedTaskfile from './GeneredTaskfile';
 import Form from '@/components/Form';
-import {Font} from './GeneredTaskfile/buildHeader';
+import { Font } from './GeneredTaskfile/buildHeader';
 
 export type GeneratorSettings = {
 	project: string;

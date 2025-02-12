@@ -1,10 +1,10 @@
-import {GeneratorSettings} from '@/components/Generator';
-import {TaskfileAddons} from '@/components/Generator/GeneredTaskfile/taskfile';
+import { GeneratorSettings } from '@/components/Generator';
+import { TaskfileAddons } from '@/components/Generator/GeneredTaskfile/taskfile';
 
 import runtime from './runtime';
 import git from './git';
 import fileUtilities from './fileUtilities';
-import appUtilities from "@/components/Generator/GeneredTaskfile/addons/appUtilities";
+import appUtilities from '@/components/Generator/GeneredTaskfile/addons/appUtilities';
 
 /**
  * Render addons for the Taskfile based on the generator settings
