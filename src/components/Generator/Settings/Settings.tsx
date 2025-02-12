@@ -1,12 +1,12 @@
 'use client';
 
-import { ReactElement } from 'react';
+import {ReactElement} from 'react';
 
-import styles from './settings.module.css';
+import styles from './settings.module.scss';
 import TextInput from '@/components/Form/Text';
 import RadioInput from '@/components/Form/Radio';
-import { useFormContext } from 'react-hook-form';
-import { GeneratorSettings } from '@/components/Generator';
+import {useFormContext} from 'react-hook-form';
+import {GeneratorSettings} from '@/components/Generator';
 import Checkbox from '@/components/Form/Checkbox';
 
 const Settings = (): ReactElement => {
@@ -80,7 +80,9 @@ const Settings = (): ReactElement => {
 				]}
 			/>
 			<Checkbox name="configureGitHooks">Configure git hooks</Checkbox>
-			<Checkbox name="fileUtilities">File utilities</Checkbox>
+			<h2>Utilities</h2>
+			<Checkbox name="fileUtilities">File checks</Checkbox>
+			<Checkbox name="appUtilities">Application dependencies</Checkbox>
 		</div>
 	);
 };

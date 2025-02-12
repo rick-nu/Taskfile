@@ -72,7 +72,7 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 banner
 if [[ ! "$(declare -F task:${@-help})" ]]; then
 	title "Task not found"
-	echo -e "Task ${YELLOW}$1${RESET} doesn't exist."
+	echo -e "Task ${RED}$1${RESET} doesn't exist."
 	task:help
 	exit 1
 fi
