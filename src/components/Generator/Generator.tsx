@@ -18,6 +18,7 @@ export type GeneratorSettings = {
 	checkoutGitRequest: 'none' | 'github' | 'gitlab';
 	configureGitHooks: boolean;
 	fileUtilities: boolean;
+	appUtilities: boolean;
 };
 
 const Generator = (): ReactElement => {
